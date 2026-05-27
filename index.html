@@ -1,0 +1,1514 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Meshari Nassar | AI Engineer Portfolio</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@500&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <!-- Shared Style Guidance Mapping -->
+    <style>
+        :root {
+            --glass-bg: rgba(11, 17, 32, 0.6);
+            --glass-border: rgba(255, 255, 255, 0.1);
+        }
+
+        body {
+            background-color: #020617;
+            color: #dde2f8;
+            overflow-x: hidden;
+        }
+
+        .glass-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(24px);
+            border: 1px solid var(--glass-border);
+            border-top-color: rgba(255, 255, 255, 0.2);
+            border-left-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .glow-blue {
+            box-shadow: 0 0 40px rgba(77, 142, 255, 0.15);
+        }
+
+        .glow-primary:hover {
+            box-shadow: 0 0 60px rgba(173, 198, 255, 0.3);
+        }
+
+        .text-gradient {
+            background: linear-gradient(135deg, #adc6ff 0%, #4cd7f6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .bg-primary-gradient {
+            background: linear-gradient(135deg, #004395 0%, #00285d 100%);
+        }
+
+        .scanline {
+            background: linear-gradient(to bottom, transparent 50%, rgba(76, 215, 246, 0.05) 50%);
+            background-size: 100% 4px;
+        }
+
+        .ai-pulse {
+            animation: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+
+            50% {
+                opacity: 0.4;
+                transform: scale(1.1);
+            }
+        }
+
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+            scroll-behavior: smooth;
+        }
+
+        .modal-overlay {
+            transition: opacity 0.35s ease, visibility 0.35s ease;
+        }
+
+        .modal-container-anim {
+            transition: transform 0.35s ease, opacity 0.35s ease;
+        }
+
+        .modal-hidden {
+            opacity: 0;
+            pointer-events: none;
+            visibility: hidden;
+        }
+
+        .modal-hidden .modal-container-anim {
+            transform: scale(0.94) translateY(24px);
+            opacity: 0;
+        }
+
+        .modal-visible {
+            opacity: 1;
+            pointer-events: auto;
+            visibility: visible;
+        }
+
+        .modal-visible .modal-container-anim {
+            transform: scale(1) translateY(0);
+            opacity: 1;
+        }
+    </style>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-primary-fixed-variant": "#004395",
+                        "on-secondary-fixed": "#001f26",
+                        "surface-container-high": "#242a3a",
+                        "surface-variant": "#2f3445",
+                        "tertiary-fixed-dim": "#c0c1ff",
+                        "on-background": "#dde2f8",
+                        "error": "#ffb4ab",
+                        "secondary": "#4cd7f6",
+                        "surface-container-highest": "#2f3445",
+                        "surface-container-low": "#151b2b",
+                        "on-primary-fixed": "#001a42",
+                        "secondary-fixed-dim": "#4cd7f6",
+                        "on-secondary-fixed-variant": "#004e5c",
+                        "primary": "#adc6ff",
+                        "surface-container": "#191f2f",
+                        "on-primary-container": "#00285d",
+                        "on-surface-variant": "#c2c6d6",
+                        "on-tertiary-fixed-variant": "#2f2ebe",
+                        "surface-dim": "#0d1322",
+                        "secondary-fixed": "#acedff",
+                        "tertiary": "#c0c1ff",
+                        "outline-variant": "#424754",
+                        "primary-container": "#4d8eff",
+                        "inverse-surface": "#dde2f8",
+                        "on-tertiary-container": "#0d0096",
+                        "on-primary": "#002e6a",
+                        "on-surface": "#dde2f8",
+                        "inverse-on-surface": "#2a3040",
+                        "tertiary-fixed": "#e1e0ff",
+                        "on-tertiary-fixed": "#07006c",
+                        "background": "#0d1322",
+                        "surface-container-lowest": "#080e1d",
+                        "surface": "#0d1322",
+                        "on-secondary-container": "#00424e",
+                        "on-error-container": "#ffdad6",
+                        "surface-tint": "#adc6ff",
+                        "primary-fixed": "#d8e2ff",
+                        "tertiary-container": "#8083ff",
+                        "error-container": "#93000a",
+                        "on-error": "#690005",
+                        "outline": "#8c909f",
+                        "primary-fixed-dim": "#adc6ff",
+                        "secondary-container": "#03b5d3",
+                        "on-tertiary": "#1000a9",
+                        "inverse-primary": "#005ac2",
+                        "surface-bright": "#33394a",
+                        "on-secondary": "#003640"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "section-gap": "120px",
+                        "gutter": "24px",
+                        "container-max": "1280px",
+                        "unit": "8px",
+                        "margin-mobile": "20px"
+                    },
+                    "fontFamily": {
+                        "display-lg": ["Sora"],
+                        "body-md": ["Inter"],
+                        "label-caps": ["JetBrains Mono"],
+                        "display-lg-mobile": ["Sora"],
+                        "headline-md": ["Sora"],
+                        "body-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "display-lg": ["64px", { "lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "700" }],
+                        "body-md": ["16px", { "lineHeight": "1.6", "letterSpacing": "0em", "fontWeight": "400" }],
+                        "label-caps": ["12px", { "lineHeight": "1.0", "letterSpacing": "0.2em", "fontWeight": "500" }],
+                        "display-lg-mobile": ["40px", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "headline-md": ["32px", { "lineHeight": "1.3", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "letterSpacing": "0em", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="bg-background selection:bg-primary/30 scroll-smooth">
+    <!-- TopNavBar (Shared Component) -->
+    <header
+        class="fixed top-0 w-full z-50 bg-surface/60 backdrop-blur-3xl border-b border-white/10 shadow-[0_0_30px_rgba(173,198,255,0.2)]">
+        <nav class="flex justify-between items-center max-w-container-max mx-auto px-gutter h-20">
+            <div class="font-display-lg text-headline-md font-bold text-on-surface tracking-tight">
+                Meshari Nassar
+            </div>
+            <div class="hidden md:flex gap-8 items-center">
+                <a class="text-primary font-semibold border-b-2 border-primary pb-1 font-body-md text-body-md"
+                    href="#home">Home</a>
+                <a class="text-on-surface-variant font-medium hover:text-primary transition-colors duration-300 font-body-md text-body-md"
+                    href="#about">About</a>
+                <a class="text-on-surface-variant font-medium hover:text-primary transition-colors duration-300 font-body-md text-body-md"
+                    href="#experience">Experience</a>
+                <a class="text-on-surface-variant font-medium hover:text-primary transition-colors duration-300 font-body-md text-body-md"
+                    href="#projects">Projects</a>
+                <a class="text-on-surface-variant font-medium hover:text-primary transition-colors duration-300 font-body-md text-body-md"
+                    href="#skills">Skills</a>
+                <a class="text-on-surface-variant font-medium hover:text-primary transition-colors duration-300 font-body-md text-body-md"
+                    href="#contact">Contact</a>
+                <button
+                    class="bg-primary-container text-on-primary-container px-6 py-2 rounded-full font-semibold active:scale-95 transition-transform">Download
+                    CV</button>
+            </div>
+            <button class="md:hidden text-on-surface">
+                <span class="material-symbols-outlined">menu</span>
+            </button>
+        </nav>
+    </header>
+    <main>
+        <!-- Hero Section -->
+        <section
+            class="pt-40 pb-section-gap px-gutter max-w-container-max mx-auto grid md:grid-cols-2 gap-12 items-center"
+            id="home">
+            <div class="space-y-8">
+                <div class="flex items-center gap-3">
+                    <span class="w-3 h-3 rounded-full bg-secondary ai-pulse"></span>
+                    <span class="font-label-caps text-label-caps text-secondary uppercase tracking-widest">Active
+                        System: AI Optimization</span>
+                </div>
+                <h1 class="font-display-lg text-display-lg-mobile md:text-display-lg text-on-surface leading-tight">
+                    AI Engineer Building <span class="text-gradient">Cloud-Native</span> Solutions
+                </h1>
+                <p class="font-body-lg text-body-lg text-on-surface-variant max-w-xl">
+                    I design and support scalable cloud-native AI solutions, with hands-on experience in containerized
+                    deployments, Kubernetes-based workloads, air-gapped environments, and LLM inference systems.
+                </p>
+                <div class="flex flex-wrap gap-3">
+                    <span class="px-4 py-1 glass-card rounded-full font-label-caps text-label-caps text-secondary">AI
+                        INFRASTRUCTURE</span>
+                    <span
+                        class="px-4 py-1 glass-card rounded-full font-label-caps text-label-caps text-secondary">KUBERNETES</span>
+                    <span
+                        class="px-4 py-1 glass-card rounded-full font-label-caps text-label-caps text-secondary">DOCKER</span>
+                    <span class="px-4 py-1 glass-card rounded-full font-label-caps text-label-caps text-secondary">LLM
+                        INFERENCE</span>
+                    <span
+                        class="px-4 py-1 glass-card rounded-full font-label-caps text-label-caps text-secondary">AIR-GAPPED
+                        AI</span>
+                    <span class="px-4 py-1 glass-card rounded-full font-label-caps text-label-caps text-secondary">MODEL
+                        SERVING</span>
+                    <span
+                        class="px-4 py-1 glass-card rounded-full font-label-caps text-label-caps text-secondary">LINUX</span>
+                    <span
+                        class="px-4 py-1 glass-card rounded-full font-label-caps text-label-caps text-secondary">POSTGRESQL</span>
+                </div>
+                <div class="flex gap-4 pt-4">
+                    <a class="px-8 py-4 bg-primary text-on-primary rounded-xl font-bold transition-all glow-primary flex items-center gap-2"
+                        href="#projects">
+                        View Projects <span class="material-symbols-outlined">arrow_forward</span>
+                    </a>
+                </div>
+            </div>
+            <div class="relative group">
+                <div
+                    class="absolute -inset-4 bg-secondary/10 blur-3xl rounded-full group-hover:bg-secondary/20 transition-all">
+                </div>
+                <div class="relative rounded-3xl overflow-hidden glass-card p-2">
+                    <img alt="AI Infrastructure Visualization"
+                        class="w-full h-auto rounded-2xl grayscale hover:grayscale-0 transition-all duration-700"
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuAqXjKu6DNbReyhozZ75EMLzNu_YQnUZ3YWf2PaKNedRPnfnJuM3XjT5DRH0UJPbHCg-kvKFbUo_UdWUyi5HdKyFtHSs0hIxUAsjQ7e5GtV-Zr9RPo5TaX4RmAqeDAMmGeZjWwIXBvP2l17HahUoi3bL3dnTykcnCPdaxxr9CRzo0q7f5kNJHGWJbF7_TQHwDG7dvxxQmiYKcUsVqUVHeFDaFQaygCdgJJ9P58rci9CNtwLDUM81yT50gROQPWRMrbqCjIein_7eWQV" />
+                </div>
+            </div>
+        </section>
+        <!-- About Section -->
+        <section class="py-section-gap px-gutter bg-surface-container-lowest/50" id="about">
+            <div class="max-w-container-max mx-auto">
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="md:col-span-2 glass-card p-10 rounded-3xl">
+                        <h2 class="font-headline-md text-headline-md text-primary mb-6">About the Engineer</h2>
+                        <p class="font-body-lg text-body-lg text-on-surface-variant leading-relaxed mb-6">
+                            Passionate AI Engineer focused on building robust architectures that scale. With a deep
+                            foundation in full-stack development and cloud infrastructure, I specialize in creating
+                            intelligent systems that bridge the gap between complex data and user-centric
+                            interfacesPassionate AI Engineer focused on building robust architectures that scale. With a
+                            deep foundation in full-stack development and cloud infrastructure, I specialize in creating
+                            intelligent systems that bridge the gap between complex data and user-centric interfaces.
+                        </p>
+                        <div class="grid grid-cols-2 md:grid-cols-4 gap-6 pt-8 border-t border-outline-variant/30">
+                            <div>
+                                <div class="text-primary font-display-lg text-headline-md">5+</div>
+                                <div class="font-label-caps text-label-caps text-on-surface-variant">Certifications
+                                </div>
+                            </div>
+                            <div>
+                                <div class="text-primary font-display-lg text-headline-md">14+</div>
+                                <div class="font-label-caps text-label-caps text-on-surface-variant">Courses</div>
+                            </div>
+                            <div>
+                                <div class="text-primary font-display-lg text-headline-md">STC</div>
+                                <div class="font-label-caps text-label-caps text-on-surface-variant">Current Role</div>
+                            </div>
+                            <div>
+                                <div class="text-primary font-display-lg text-headline-md">Riyadh</div>
+                                <div class="font-label-caps text-label-caps text-on-surface-variant">Location</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="space-y-6">
+                        <div class="glass-card p-6 rounded-2xl flex items-start gap-4">
+                            <span class="material-symbols-outlined text-secondary text-3xl">psychology</span>
+                            <div>
+                                <h4 class="font-bold text-on-surface">AI Infrastructure</h4>
+                                <p class="text-sm text-on-surface-variant">LLM inference, model serving &amp; secure AI
+                                    environments</p>
+                            </div>
+                        </div>
+                        <div class="glass-card p-6 rounded-2xl flex items-start gap-4">
+                            <span class="material-symbols-outlined text-secondary text-3xl">cloud</span>
+                            <div>
+                                <h4 class="font-bold text-on-surface">Cloud Native System</h4>
+                                <p class="text-sm text-on-surface-variant">Docker, Kubernetes, Linux &amp; containerized
+                                    deployments</p>
+                            </div>
+                        </div>
+                        <div class="glass-card p-6 rounded-2xl flex items-start gap-4">
+                            <span class="material-symbols-outlined text-secondary text-3xl">layers</span>
+                            <div>
+                                <h4 class="font-bold text-on-surface">Full-Stack Development</h4>
+                                <p class="text-sm text-on-surface-variant">Next.js, FastAPI, PostgreSQL &amp; Modern web
+                                    applications</p>
+                            </div>
+                        </div>
+                        <div class="glass-card p-6 rounded-2xl flex items-start gap-4">
+                            <span class="material-symbols-outlined text-secondary text-3xl">deployed_code</span>
+                            <div>
+                                <h4 class="font-bold text-on-surface">Backend & APIs</h4>
+                                <p class="text-sm text-on-surface-variant">FastAPI, REST APIs &amp;
+                                    Authentication</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Experience -->
+        <section class="py-section-gap px-gutter max-w-container-max mx-auto" id="experience">
+            <h2 class="font-headline-md text-headline-md text-on-surface mb-12 flex items-center gap-4">
+                <span class="material-symbols-outlined text-primary">terminal</span>
+                Professional Experience
+            </h2>
+
+            <!-- Timeline Indicator -->
+            <div class="hidden lg:grid grid-cols-2 gap-8 mb-10">
+                <!-- Step 1 -->
+                <div class="relative flex items-center gap-3">
+                    <div class="absolute left-2 right-0 top-1/2 h-px bg-outline-variant/40"></div>
+
+                    <div class="relative z-10 w-5 h-5 rounded-full bg-primary ring-4 ring-primary/20"></div>
+
+                    <span class="relative z-10 bg-[#0b1020] px-3 text-secondary font-label-caps text-label-caps">
+                        01 · Internship
+                    </span>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="relative flex items-center gap-3">
+                    <div class="absolute left-2 right-0 top-1/2 h-px bg-outline-variant/40"></div>
+
+                    <div class="relative z-10 w-5 h-5 rounded-full bg-primary ring-4 ring-primary/20"></div>
+
+                    <span class="relative z-10 bg-[#0b1020] px-3 text-secondary font-label-caps text-label-caps">
+                        02 · Current Role
+                    </span>
+                </div>
+            </div>
+
+            <!-- Experience Cards -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <!-- Item 1: Internship -->
+                <div class="glass-card p-8 rounded-2xl glow-blue">
+                    <span class="text-secondary font-label-caps text-label-caps mb-2 block">
+                        March 2025 - May 2025
+                    </span>
+
+                    <h3 class="text-xl font-bold text-on-surface">
+                        ERP & Data Analyst Intern
+                    </h3>
+
+                    <p class="text-primary font-semibold mb-4">
+                        Almajal Alarabi Holding (MAG)
+                    </p>
+
+                    <ul class="space-y-2 text-on-surface-variant text-sm list-disc pl-4">
+                        <li>
+                            Supported Oracle ERP daily activities across Finance, HR, and Supply Chain modules.
+                        </li>
+                        <li>
+                            Assisted with financial data entry, employee records, and basic user support.
+                        </li>
+                        <li>
+                            Used Excel to analyze operational data and build reporting dashboards.
+                        </li>
+                        <li>
+                            Gained practical exposure to ERP systems, business processes, and data-driven reporting.
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Item 2: Current Role -->
+                <div class="glass-card p-8 rounded-2xl glow-blue">
+                    <span class="text-secondary font-label-caps text-label-caps mb-2 block">
+                        2025 - Present
+                    </span>
+
+                    <h3 class="text-xl font-bold text-on-surface">
+                        AI Infrastructure Engineer
+                    </h3>
+
+                    <p class="text-primary font-semibold mb-4">
+                        Solutions by STC
+                    </p>
+
+                    <ul class="space-y-2 text-on-surface-variant text-sm list-disc pl-4">
+                        <li>
+                            Supporting air-gapped AI model inference environments.
+                        </li>
+                        <li>
+                            Working with Kubernetes-based AI workloads, container images, and local model caches.
+                        </li>
+                        <li>
+                            Validating model serving readiness for LLM and embedding models.
+                        </li>
+                        <li>
+                            Collaborating with senior engineers on deployment, cache, image, and inference-related
+                            issues.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        <!-- Projects Bento Grid -->
+        <section class="py-section-gap px-gutter bg-surface-container-low/30" id="projects">
+            <div class="max-w-container-max mx-auto">
+                <div class="flex justify-between items-end mb-12">
+                    <div>
+                        <h2 class="font-headline-md text-headline-md text-on-surface">Featured Projects</h2>
+                        <p class="text-on-surface-variant">Exploring the synergy of code and intelligence.</p>
+                    </div>
+                    <a class="text-secondary hover:underline flex items-center gap-2"
+                        href="https://github.com/MshariBinNassar">View Github <span
+                            class="material-symbols-outlined">open_in_new</span></a>
+                </div>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <!-- Project 1 -->
+                    <div class="glass-card rounded-3xl overflow-hidden group">
+                        <div class="h-48 bg-surface-container-high relative overflow-hidden">
+                            <div class="absolute inset-0 bg-gradient-to-t from-background to-transparent z-10"></div>
+                            <img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                                data-alt="A futuristic web application dashboard interface for an education platform called SkillUp. The UI is dark and modern with glowing cyan and indigo accents, featuring progress charts, course modules, and a minimalist sidebar. The aesthetic is clean, professional, and high-tech."
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuCWjOyoEMXVHsERmnQfCgGxhZ-nMkMoUHsoxjmzA3f0JoFDUvcxKOV1HXPtshX_sZqa9fIxb7SLK9KvutUCwCC8sroDZhnaFFD3RUs83FZIvYzSM5dvzlHN47JylHjcY_ooEos-NeoSndL8YoapbXtmr4WGWkDZ1ekR-ISWdSQF64koh-PD5LyZ8XRPEXR6Hz_VDg3hTADHBVZRM6CRDaMtSwH7SoWR6ln3hbUJUWi56rsobNH3NnxHLge7E_fg7nv0HsMxuVs7IhHp" />
+                        </div>
+                        <div class="p-8">
+                            <h3 class="text-xl font-bold mb-3">SkillUp.AI</h3>
+                            <p class="text-on-surface-variant text-sm mb-6">AI-powered career roadmap platform for
+                                discovering paths, analyzing jobs, detecting skill gaps, and tracking career progress.
+                            </p>
+                            <div class="flex flex-wrap gap-2 mb-8">
+                                <span
+                                    class="px-2 py-1 bg-secondary/10 text-secondary text-[10px] font-label-caps rounded">REACT</span>
+                                <span
+                                    class="px-2 py-1 bg-secondary/10 text-secondary text-[10px] font-label-caps rounded">NODE.JS</span>
+                                <span
+                                    class="px-2 py-1 bg-secondary/10 text-secondary text-[10px] font-label-caps rounded">POSTGRESQL</span>
+                                <span
+                                    class="px-2 py-1 bg-secondary/10 text-secondary text-[10px] font-label-caps rounded">OAUTH</span>
+                                <span
+                                    class="px-2 py-1 bg-secondary/10 text-secondary text-[10px] font-label-caps rounded">GEMINI
+                                    AI</span>
+                            </div>
+                            <div class="flex gap-4">
+                                <button class="text-sm font-bold text-primary flex items-center gap-1 group/btn"
+                                    onclick="openModal('modal-skillup')">
+                                    Details
+                                    <span
+                                        class="material-symbols-outlined text-sm group-hover/btn:translate-x-1 transition-transform">chevron_right</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Project 2 -->
+                    <div class="glass-card rounded-3xl overflow-hidden group">
+                        <div class="h-48 bg-surface-container-high relative overflow-hidden">
+                            <div class="absolute inset-0 bg-gradient-to-t from-background to-transparent z-10"></div>
+                            <img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                                data-alt="A conceptual rendering of a high-fidelity digital human avatar being constructed by blue laser lines and particle effects. The background is a dark deep-space blue with glowing data nodes. The style is cinematic, evoking a sense of advanced artificial intelligence and digital twin technology."
+                                src="images/LocalAssistant.png" />
+                        </div>
+                        <div class="p-8">
+                            <h3 class="text-xl font-bold mb-3">AskMyDocs.AI</h3>
+                            <p class="text-on-surface-variant text-sm mb-6">A local AI-powered knowledge assistant that
+                                helps users summarize documents, ask questions, and understand technical notes using
+                                LLMs running locally with Ollama.</p>
+                            <div class="flex flex-wrap gap-2 mb-8">
+                                <span
+                                    class="px-2 py-1 bg-secondary/10 text-secondary text-[10px] font-label-caps rounded">PYTHON</span>
+                                <span
+                                    class="px-2 py-1 bg-secondary/10 text-secondary text-[10px] font-label-caps rounded">LLM</span>
+                                <span
+                                    class="px-2 py-1 bg-secondary/10 text-secondary text-[10px] font-label-caps rounded">OLLAMA</span>
+                                <span
+                                    class="px-2 py-1 bg-secondary/10 text-secondary text-[10px] font-label-caps rounded">STREAMLIT</span>
+                            </div>
+                            <div class="flex gap-4">
+                                <button class="text-sm font-bold text-primary flex items-center gap-1 group/btn"
+                                    onclick="openModal('modal-askmydocs')">
+                                    Details
+                                    <span
+                                        class="material-symbols-outlined text-sm group-hover/btn:translate-x-1 transition-transform">chevron_right</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Project 3 -->
+                    <div class="glass-card rounded-3xl overflow-hidden group">
+                        <div class="h-48 bg-surface-container-high relative overflow-hidden">
+                            <div class="absolute inset-0 bg-gradient-to-t from-background to-transparent z-10"></div>
+                            <img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                                data-alt="A high-tech surveillance command center visualization featuring multiple floating holographic screens with thermal imaging, object detection bounding boxes, and complex network mapping. The lighting is dominated by glowing blue and cyan tones against a deep black background, suggesting advanced security intelligence."
+                                src="images/comingsoon.png" />
+                        </div>
+                        <div class="p-8">
+                            <h3 class="text-xl font-bold mb-3">Coming Soon..</h3>
+                            <p class="text-on-surface-variant text-sm mb-6">A new AI-powered project in progress,
+                                focused on building practical and intelligent solutions for real-world use cases.</p>
+                            <div class="flex flex-wrap gap-2 mb-8">
+                                <span
+                                    class="px-2 py-1 bg-secondary/10 text-secondary text-[10px] font-label-caps rounded">IN
+                                    PROGRESS..</span>
+                            </div>
+                            <div class="flex gap-4">
+                                <button class="text-sm font-bold text-primary flex items-center gap-1 group/btn"
+                                    onclick="openModal('modal-comingsoon')">
+                                    Details
+                                    <span
+                                        class="material-symbols-outlined text-sm group-hover/btn:translate-x-1 transition-transform">chevron_right</span>
+                                </button>
+                                <span class="text-sm font-bold text-on-surface-variant/50 cursor-not-allowed">Coming
+                                    Soon</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Project Details Modal -->
+        <div class="fixed inset-0 z-[100] modal-overlay bg-black/80 backdrop-blur-xl modal-hidden flex items-center justify-center p-gutter md:p-12 overflow-hidden"
+            id="modal-overlay" onclick="handleModalOverlayClick(event)">
+            <button
+                class="absolute top-6 right-6 md:top-12 md:right-12 text-on-surface-variant hover:text-primary transition-colors z-[110]"
+                onclick="closeModal()">
+                <span class="material-symbols-outlined text-4xl">close</span>
+            </button>
+
+            <!-- SkillUp Modal -->
+            <div class="modal-container-anim hidden w-full max-w-5xl max-h-[90vh] rounded-[2rem] overflow-y-auto no-scrollbar shadow-[0_0_80px_rgba(77,142,255,0.3)] bg-surface-container-high/70 backdrop-blur-2xl border-2 border-primary/30 relative"
+                id="modal-skillup">
+                <div class="p-8 md:p-14">
+                    <div class="flex flex-col md:flex-row justify-between items-start gap-8 mb-12">
+                        <div class="space-y-4">
+                            <div class="flex items-center flex-wrap gap-4">
+                                <h2 class="font-display-lg text-4xl md:text-5xl text-on-surface">SkillUp.AI</h2>
+                                <span
+                                    class="px-4 py-1.5 bg-green-500/15 text-green-300 font-label-caps text-[10px] rounded-full border border-green-400/30 flex items-center gap-2">
+                                    <span class="w-2 h-2 rounded-full bg-green-400 ai-pulse"></span>
+                                    COMPLETED
+                                </span>
+                            </div>
+                            <p class="text-secondary font-body-lg text-xl md:text-2xl font-medium">
+                                AI-powered career roadmap platform
+                            </p>
+                        </div>
+
+                        <a class="px-8 py-4 bg-primary text-on-primary rounded-2xl font-bold hover:shadow-[0_0_30px_rgba(173,198,255,0.4)] transition-all flex items-center justify-center gap-2"
+                            href="https://github.com/MshariBinNassar/SKillUp.AI" target="_blank"
+                            rel="noopener noreferrer">
+                            <span class="material-symbols-outlined text-xl">link</span>
+                            GitHub Repo
+                        </a>
+                    </div>
+
+                    <div class="space-y-10">
+                        <div class="glass-card p-8 rounded-3xl border-primary/10">
+                            <h4 class="font-label-caps text-secondary mb-6 flex items-center gap-3">
+                                <span class="material-symbols-outlined text-xl">info</span>
+                                OVERVIEW
+                            </h4>
+                            <p class="text-on-surface-variant text-lg leading-relaxed">
+                                SkillUp.AI is an AI-guided career intelligence web application designed to support
+                                technical career growth. It combines user profile data, career discovery, real-world job
+                                analysis, and actionable checklists into one guided experience. Through structured
+                                pathways and milestone tracking, SkillUp.AI helps users close the gap between their
+                                current skills and industry requirements.
+                            </p>
+                        </div>
+
+                        <div class="grid md:grid-cols-2 gap-8">
+                            <div class="glass-card p-8 rounded-3xl border-error/20">
+                                <h4 class="font-label-caps text-error mb-4 flex items-center gap-3">
+                                    <span class="material-symbols-outlined text-xl">report_problem</span>
+                                    PROBLEM
+                                </h4>
+                                <p class="text-on-surface-variant leading-relaxed">
+                                    Many students, recent graduates, and tech professionals struggle to identify the
+                                    specific skills
+                                    required for their target roles. Furthermore, translating complex job requirements
+                                    into
+                                    actionable learning plans remains a significant challenge. SkillUP.AI addresses this
+                                    by converting
+                                    abstract job market demands into clear, actionable proof points, seamlessly
+                                    connecting career
+                                    discovery with tangible execution.
+                                </p>
+                            </div>
+
+                            <div class="glass-card p-8 rounded-3xl border-secondary/20">
+                                <h4 class="font-label-caps text-secondary mb-4 flex items-center gap-3">
+                                    <span class="material-symbols-outlined text-xl">auto_awesome</span>
+                                    CORE FEATURES
+                                </h4>
+                                <ul class="space-y-3 text-on-surface-variant leading-relaxed">
+                                    <li>• Authentication</li>
+                                    <li>• Profile Setup Wizard</li>
+                                    <li>• Discovery Hub</li>
+                                    <li>• Career Roadmaps</li>
+                                    <li>• Job Fit Analyzer</li>
+                                    <li>• Dashboard Tracking</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="glass-card p-8 rounded-3xl border-tertiary/20">
+                            <h4 class="font-label-caps text-tertiary mb-6 flex items-center gap-3">
+                                <span class="material-symbols-outlined text-xl">engineering</span>
+                                MY CONTRIBUTION
+                            </h4>
+                            <p class="text-on-surface-variant leading-relaxed">
+                                I designed and developed the application structure, built the frontend interface,
+                                implemented backend logic, worked with PostgreSQL, integrated authentication, and
+                                connected AI-based recommendation flows.
+                            </p>
+                        </div>
+
+                        <section>
+                            <h4 class="font-label-caps text-secondary mb-8 text-center">
+                                TARGET USERS
+                            </h4>
+
+                            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                                <div class="glass-card p-6 rounded-2xl">
+                                    <span class="material-symbols-outlined text-primary mb-4 text-3xl">
+                                        school
+                                    </span>
+                                    <h5 class="font-bold mb-2">Students</h5>
+                                    <p class="text-xs text-on-surface-variant">
+                                        Exploring technical career paths.
+                                    </p>
+                                </div>
+
+                                <div class="glass-card p-6 rounded-2xl">
+                                    <span class="material-symbols-outlined text-primary mb-4 text-3xl">
+                                        workspace_premium
+                                    </span>
+                                    <h5 class="font-bold mb-2">Recent Graduates</h5>
+                                    <p class="text-xs text-on-surface-variant">
+                                        Preparing for entry-level roles.
+                                    </p>
+                                </div>
+
+                                <div class="glass-card p-6 rounded-2xl">
+                                    <span class="material-symbols-outlined text-primary mb-4 text-3xl">
+                                        code
+                                    </span>
+                                    <h5 class="font-bold mb-2">Junior Developers</h5>
+                                    <p class="text-xs text-on-surface-variant">
+                                        Building job-ready portfolios.
+                                    </p>
+                                </div>
+
+                                <div class="glass-card p-6 rounded-2xl">
+                                    <span class="material-symbols-outlined text-primary mb-4 text-3xl">
+                                        trending_up
+                                    </span>
+                                    <h5 class="font-bold mb-2">Mid-level &amp; Senior Professionals</h5>
+                                    <p class="text-xs text-on-surface-variant">
+                                        Growing into specialized or leadership roles.
+                                    </p>
+                                </div>
+
+                                <div class="glass-card p-6 rounded-2xl">
+                                    <span class="material-symbols-outlined text-primary mb-4 text-3xl">
+                                        sync_alt
+                                    </span>
+                                    <h5 class="font-bold mb-2">Career Switchers</h5>
+                                    <p class="text-xs text-on-surface-variant">
+                                        Transitioning into technical fields.
+                                    </p>
+                                </div>
+                            </div>
+                        </section>
+
+                        <section>
+                            <div class="glass-card p-8 rounded-3xl border-primary/10">
+                                <h4 class="font-label-caps text-secondary mb-6">
+                                    TECH STACK
+                                </h4>
+
+                                <div class="flex flex-wrap gap-3">
+                                    <span class="px-5 py-2 glass-card rounded-full text-sm font-bold">
+                                        Next.js
+                                    </span>
+
+                                    <span class="px-5 py-2 glass-card rounded-full text-sm font-bold">
+                                        React
+                                    </span>
+
+                                    <span class="px-5 py-2 glass-card rounded-full text-sm font-bold">
+                                        TypeScript
+                                    </span>
+
+                                    <span class="px-5 py-2 glass-card rounded-full text-sm font-bold">
+                                        Prisma
+                                    </span>
+
+                                    <span class="px-5 py-2 glass-card rounded-full text-sm font-bold">
+                                        PostgreSQL
+                                    </span>
+
+                                    <span class="px-5 py-2 glass-card rounded-full text-sm font-bold">
+                                        OAuth
+                                    </span>
+
+                                    <span class="px-5 py-2 glass-card rounded-full text-sm font-bold">
+                                        Gemini AI
+                                    </span>
+                                </div>
+                            </div>
+                        </section>
+
+                        <div class="flex justify-end gap-4 pt-4">
+                            <button
+                                class="px-6 py-3 rounded-xl glass-card font-bold text-on-surface hover:text-primary transition-colors"
+                                onclick="closeModal()">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- AskMyDocs Modal -->
+            <div class="modal-container-anim hidden w-full max-w-4xl max-h-[90vh] rounded-[2rem] overflow-y-auto no-scrollbar shadow-[0_0_80px_rgba(77,142,255,0.3)] bg-surface-container-high/70 backdrop-blur-2xl border-2 border-secondary/30 relative"
+                id="modal-askmydocs">
+                <div class="p-8 md:p-14">
+                    <div class="flex flex-col md:flex-row justify-between items-start gap-8 mb-10">
+                        <div>
+                            <div class="flex items-center flex-wrap gap-4 mb-4">
+                                <h2 class="font-display-lg text-4xl md:text-5xl text-on-surface">
+                                    AskMyDocs.AI
+                                </h2>
+
+                                <span
+                                    class="px-4 py-1.5 bg-yellow-500/15 text-yellow-300 font-label-caps text-[10px] rounded-full border border-yellow-400/30 flex items-center gap-2">
+                                    <span class="w-2 h-2 rounded-full bg-yellow-400 ai-pulse"></span>
+                                    IN PROGRESS
+                                </span>
+                            </div>
+
+                            <p class="text-on-surface-variant text-lg leading-relaxed max-w-3xl">
+                                A local AI-powered knowledge assistant that helps users summarize documents, ask
+                                questions,
+                                and understand technical notes using LLMs running locally with Ollama.
+                            </p>
+                        </div>
+
+                        <button type="button" disabled
+                            class="px-8 py-4 bg-primary text-on-primary rounded-2xl font-bold flex items-center justify-center gap-2 opacity-70 cursor-not-allowed whitespace-nowrap">
+                            <span class="material-symbols-outlined text-xl">schedule</span>
+                            GitHub Coming Soon
+                        </button>
+                    </div>
+
+                    <div class="grid md:grid-cols-2 gap-8 mb-10">
+                        <div class="glass-card p-8 rounded-3xl">
+                            <h4 class="font-label-caps text-secondary mb-4">PROJECT GOAL</h4>
+                            <p class="text-on-surface-variant">
+                                Build a simple local assistant that lets users interact with their documents without
+                                relying on external hosted AI APIs.
+                            </p>
+                        </div>
+
+                        <div class="glass-card p-8 rounded-3xl">
+                            <h4 class="font-label-caps text-primary mb-4">TECH STACK</h4>
+                            <div class="flex flex-wrap gap-3">
+                                <span class="px-4 py-2 glass-card rounded-full text-sm font-bold">Python</span>
+                                <span class="px-4 py-2 glass-card rounded-full text-sm font-bold">Ollama</span>
+                                <span class="px-4 py-2 glass-card rounded-full text-sm font-bold">LLM</span>
+                                <span class="px-4 py-2 glass-card rounded-full text-sm font-bold">Streamlit</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="glass-card p-8 rounded-3xl mb-10">
+                        <h4 class="font-label-caps text-tertiary mb-4">KEY FEATURES</h4>
+                        <ul class="space-y-3 text-on-surface-variant list-disc pl-5">
+                            <li>Document summarization</li>
+                            <li>Question answering over uploaded notes</li>
+                            <li>Local LLM experimentation with Ollama</li>
+                            <li>Simple UI for personal knowledge assistance</li>
+                        </ul>
+                    </div>
+
+                    <div class="flex justify-end">
+                        <button
+                            class="px-6 py-3 rounded-xl glass-card font-bold text-on-surface hover:text-primary transition-colors"
+                            onclick="closeModal()">Close</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Coming Soon Modal -->
+            <div class="modal-container-anim hidden w-full max-w-3xl max-h-[90vh] rounded-[2rem] overflow-y-auto no-scrollbar shadow-[0_0_80px_rgba(77,142,255,0.3)] bg-surface-container-high/70 backdrop-blur-2xl border-2 border-primary/30 relative"
+                id="modal-comingsoon">
+                <div class="p-8 md:p-14">
+                    <span class="font-label-caps text-secondary text-label-caps">PROJECT IN PROGRESS</span>
+                    <h2 class="font-display-lg text-4xl md:text-5xl text-on-surface mt-3 mb-6">Coming Soon</h2>
+                    <p class="text-on-surface-variant text-lg leading-relaxed mb-10">
+                        A new AI-powered project is currently in progress. This section will be updated once the
+                        concept,
+                        features, and implementation details are ready to share.
+                    </p>
+
+                    <div class="glass-card p-8 rounded-3xl">
+                        <h4 class="font-label-caps text-secondary mb-4">STATUS</h4>
+                        <p class="text-on-surface-variant">
+                            Planning and development stage.
+                        </p>
+                    </div>
+
+                    <div class="flex justify-end mt-10">
+                        <button
+                            class="px-6 py-3 rounded-xl glass-card font-bold text-on-surface hover:text-primary transition-colors"
+                            onclick="closeModal()">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Skills Categories -->
+
+        <!-- Certifications -->
+        <section class="py-section-gap px-gutter bg-surface-container-lowest" id="certifications">
+            <div class="max-w-container-max mx-auto">
+                <h2 class="font-headline-md text-headline-md text-on-surface mb-12 text-center">
+                    Certifications
+                </h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                    <div class="glass-card p-6 rounded-2xl border-l-4 border-primary">
+                        <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
+                            <img src="images/ORCL-d5a587ae.png" alt="Oracle logo" class="w-8 h-8 object-contain" />
+                        </div>
+                        <h4 class="font-bold mb-1">
+                            Oracle Cloud Infrastructure 2025 Generative AI Professional - 1Z0-1127-25
+                        </h4>
+                        <p class="text-xs text-on-surface-variant">Oracle Cloud AI</p>
+                        <a href="https://catalog-education.oracle.com/pls/certview/sharebadge?id=BCB81ECC7A252B2607AF2FE4097F9225C8CA394EDB85DEE16D1CF3F55DBF3771"
+                            target="_blank" rel="noopener noreferrer"
+                            class="inline-flex items-center gap-2 mt-5 text-sm font-semibold text-primary hover:text-secondary transition-colors">
+                            View Credential
+                            <span class="material-symbols-outlined text-base">open_in_new</span>
+                        </a>
+                    </div>
+
+                    <div class="glass-card p-6 rounded-2xl border-l-4 border-secondary">
+                        <div class="w-12 h-12 bg-secondary/10 rounded-lg flex items-center justify-center mb-4">
+                            <img src="images/ORCL-d5a587ae.png" alt="Oracle logo" class="w-8 h-8 object-contain" />
+                        </div>
+                        <h4 class="font-bold mb-1">
+                            Oracle Cloud Infrastructure 2025 Architect Associate - 1Z0-1072-25
+                        </h4>
+                        <p class="text-xs text-on-surface-variant">Oracle Cloud Infrastructure</p>
+                        <a href="https://catalog-education.oracle.com/pls/certview/sharebadge?id=59F6C493817BF4EE9D9026F16A79E265AF0DC1D93DD843DFE13AC7E21B53DFEA"
+                            target="_blank" rel="noopener noreferrer"
+                            class="inline-flex items-center gap-2 mt-5 text-sm font-semibold text-primary hover:text-secondary transition-colors">
+                            View Credential
+                            <span class="material-symbols-outlined text-base">open_in_new</span>
+                        </a>
+                    </div>
+
+                    <div class="glass-card p-6 rounded-2xl border-l-4 border-tertiary">
+                        <div class="w-12 h-12 bg-tertiary/10 rounded-lg flex items-center justify-center mb-4">
+                            <img src="images/azurelogo.png" alt="Microsoft Azure logo" class="w-8 h-8 object-contain" />
+                        </div>
+                        <h4 class="font-bold mb-1">
+                            Microsoft Certified: Azure Fundamentals - AZ-900
+                        </h4>
+                        <p class="text-xs text-on-surface-variant">Microsoft Azure Fundamentals</p>
+                        <a href="https://learn.microsoft.com/api/credentials/share/en-us/MeshariNBinNassar-0858/615E7ADB1619A4D?sharingId=3BE74A778227B5BC"
+                            target="_blank" rel="noopener noreferrer"
+                            class="inline-flex items-center gap-2 mt-5 text-sm font-semibold text-primary hover:text-secondary transition-colors">
+                            View Credential
+                            <span class="material-symbols-outlined text-base">open_in_new</span>
+                        </a>
+                    </div>
+
+                    <div class="glass-card p-6 rounded-2xl border-l-4 border-white/20">
+                        <div class="w-12 h-12 bg-white/5 rounded-lg flex items-center justify-center mb-4">
+                            <img src="images/ORCL-d5a587ae.png" alt="Oracle logo" class="w-8 h-8 object-contain" />
+                        </div>
+                        <h4 class="font-bold mb-1">
+                            Oracle Cloud Infrastructure 2025 Foundations Associate - 1Z0-1085-25
+                        </h4>
+                        <p class="text-xs text-on-surface-variant">Oracle Cloud Infrastructure</p>
+                        <a href="https://catalog-education.oracle.com/pls/certview/sharebadge?id=0BD48AD13D8833A37CFF68F850144CF07DFB96DDDDF77AD79BA89A71B663F5AE"
+                            target="_blank" rel="noopener noreferrer"
+                            class="inline-flex items-center gap-2 mt-5 text-sm font-semibold text-primary hover:text-secondary transition-colors">
+                            View Credential
+                            <span class="material-symbols-outlined text-base">open_in_new</span>
+                        </a>
+                    </div>
+
+
+                    <div class="glass-card p-6 rounded-2xl border-l-4 border-primary/40">
+                        <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
+                            <img src="images/ORCL-d5a587ae.png" alt="Oracle logo" class="w-8 h-8 object-contain" />
+                        </div>
+                        <h4 class="font-bold mb-1">
+                            Oracle Cloud Infrastructure 2025 AI Foundations Associate - 1Z0-1122-25
+                        </h4>
+                        <p class="text-xs text-on-surface-variant">Oracle Cloud AI</p>
+                        <a href="https://catalog-education.oracle.com/pls/certview/sharebadge?id=C31C67CC09210FB3DC6DCC68110D02E7C35A7DE4DBE1C0158778B2F3C0A11BD9"
+                            target="_blank" rel="noopener noreferrer"
+                            class="inline-flex items-center gap-2 mt-5 text-sm font-semibold text-primary hover:text-secondary transition-colors">
+                            View Credential
+                            <span class="material-symbols-outlined text-base">open_in_new</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="py-section-gap px-gutter max-w-container-max mx-auto" id="skills">
+            <h2 class="font-headline-md text-headline-md text-on-surface mb-12 text-center">Core Technical Skills</h2>
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+                <div class="glass-card p-8 rounded-2xl border-t-2 border-primary">
+                    <h3 class="font-bold mb-4 text-primary">Programming</h3>
+                    <div class="space-y-3">
+                        <div class="flex justify-between items-center"><span
+                                class="text-sm text-on-surface-variant">Python</span><span
+                                class="w-1.5 h-1.5 rounded-full bg-secondary"></span></div>
+                        <div class="flex justify-between items-center"><span
+                                class="text-sm text-on-surface-variant">TypeScript</span><span
+                                class="w-1.5 h-1.5 rounded-full bg-secondary"></span></div>
+                        <div class="flex justify-between items-center"><span
+                                class="text-sm text-on-surface-variant">SQL</span><span
+                                class="w-1.5 h-1.5 rounded-full bg-secondary"></span></div>
+                        <div class="flex justify-between items-center"><span
+                                class="text-sm text-on-surface-variant">Java</span><span
+                                class="w-1.5 h-1.5 rounded-full bg-secondary"></span></div>
+                        <div class="flex justify-between items-center"><span
+                                class="text-sm text-on-surface-variant">HTML</span><span
+                                class="w-1.5 h-1.5 rounded-full bg-secondary"></span></div>
+                    </div>
+                </div>
+                <div class="glass-card p-8 rounded-2xl border-t-2 border-secondary">
+                    <h3 class="font-bold mb-4 text-secondary">Cloud &amp; AI</h3>
+                    <div class="space-y-3">
+                        <div class="flex justify-between items-center"><span class="text-sm text-on-surface-variant">OCI
+                                / Azure / AWS</span><span class="w-1.5 h-1.5 rounded-full bg-secondary"></span></div>
+                        <div class="flex justify-between items-center"><span
+                                class="text-sm text-on-surface-variant">Air-Gapped AI Infrence</span><span
+                                class="w-1.5 h-1.5 rounded-full bg-secondary"></span></div>
+                        <div class="flex justify-between items-center"><span class="text-sm text-on-surface-variant">AI
+                                Infrastructure</span><span class="w-1.5 h-1.5 rounded-full bg-secondary"></span></div>
+                        <div class="flex justify-between items-center"><span class="text-sm text-on-surface-variant">LLM
+                                Infrence</span><span class="w-1.5 h-1.5 rounded-full bg-secondary"></span></div>
+                        <div class="flex justify-between items-center"><span
+                                class="text-sm text-on-surface-variant">Model Serving</span><span
+                                class="w-1.5 h-1.5 rounded-full bg-secondary"></span></div>
+                    </div>
+                </div>
+                <div class="glass-card p-8 rounded-2xl border-t-2 border-tertiary">
+                    <h3 class="font-bold mb-4 text-tertiary">Web Systems</h3>
+                    <div class="space-y-3">
+                        <div class="flex justify-between items-center"><span
+                                class="text-sm text-on-surface-variant">Next.js / React</span><span
+                                class="w-1.5 h-1.5 rounded-full bg-secondary"></span></div>
+                        <div class="flex justify-between items-center"><span
+                                class="text-sm text-on-surface-variant">FastAPI</span><span
+                                class="w-1.5 h-1.5 rounded-full bg-secondary"></span></div>
+                        <div class="flex justify-between items-center"><span
+                                class="text-sm text-on-surface-variant">PostgreSQL</span><span
+                                class="w-1.5 h-1.5 rounded-full bg-secondary"></span></div>
+                        <div class="flex justify-between items-center"><span
+                                class="text-sm text-on-surface-variant">REST APIs</span><span
+                                class="w-1.5 h-1.5 rounded-full bg-secondary"></span></div>
+                        <div class="flex justify-between items-center"><span
+                                class="text-sm text-on-surface-variant">Google Authentication</span><span
+                                class="w-1.5 h-1.5 rounded-full bg-secondary"></span></div>
+                    </div>
+                </div>
+                <div class="glass-card p-8 rounded-2xl border-t-2 border-white/20">
+                    <h3 class="font-bold mb-4 text-on-surface">DevOps &amp; Tools</h3>
+                    <div class="space-y-3">
+                        <div class="flex justify-between items-center"><span
+                                class="text-sm text-on-surface-variant">Docker</span><span
+                                class="w-1.5 h-1.5 rounded-full bg-secondary"></span></div>
+                        <div class="flex justify-between items-center"><span
+                                class="text-sm text-on-surface-variant">Linux/Bash</span><span
+                                class="w-1.5 h-1.5 rounded-full bg-secondary"></span></div>
+                        <div class="flex justify-between items-center"><span class="text-sm text-on-surface-variant">Git
+                                / GitHub</span><span class="w-1.5 h-1.5 rounded-full bg-secondary"></span></div>
+                        <div class="flex justify-between items-center"><span
+                                class="text-sm text-on-surface-variant">Container Images</span><span
+                                class="w-1.5 h-1.5 rounded-full bg-secondary"></span></div>
+                        <div class="flex justify-between items-center"><span class="text-sm text-on-surface-variant">VS
+                                Code</span><span class="w-1.5 h-1.5 rounded-full bg-secondary"></span></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Courses -->
+        <section class="py-section-gap px-gutter bg-surface-container-lowest" id="courses">
+            <div class="max-w-container-max mx-auto">
+                <h2 class="font-headline-md text-headline-md text-on-surface mb-12 text-center">
+                    Courses
+                </h2>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                    <!-- Course 1 -->
+                    <div class="glass-card p-6 rounded-2xl border-l-4 border-primary">
+                        <div class="w-12 h-12 bg-white/5 rounded-lg flex items-center justify-center mb-4 p-2">
+                            <img src="images/Amazon_Web_Services_Logo.svg.png" alt="AWS logo"
+                                class="w-8 h-8 object-contain" />
+                        </div>
+
+                        <h4 class="font-bold mb-1">
+                            Machine Learning Engineering on AWS
+                        </h4>
+                        <p class="text-xs text-on-surface-variant">
+                            Amazon Web Services
+                        </p>
+
+                        <a href="courses/AMAZON_WEB_SERVICES_MLEA_1480721 (1).pdf" target="_blank"
+                            rel="noopener noreferrer"
+                            class="inline-flex items-center gap-2 mt-5 text-sm font-semibold text-primary hover:text-secondary transition-colors">
+                            View Credential
+                            <span class="material-symbols-outlined text-base">open_in_new</span>
+                        </a>
+                    </div>
+
+                    <!-- Course 2 -->
+                    <div class="glass-card p-6 rounded-2xl border-l-4 border-secondary">
+                        <div class="w-12 h-12 bg-white/5 rounded-lg flex items-center justify-center mb-4 p-2">
+                            <img src="images/Amazon_Web_Services_Logo.svg.png" alt="AWS logo"
+                                class="w-8 h-8 object-contain" />
+                        </div>
+
+                        <h4 class="font-bold mb-1">
+                            Develoeping Generative AI Applications on AWS
+                        </h4>
+
+                        <p class="text-xs text-on-surface-variant">
+                            Amazon Web Services
+                        </p>
+
+                        <a href="courses/AMAZON_WEB_SERVICES_DGAIA_1485302.pdf" target="_blank"
+                            rel="noopener noreferrer"
+                            class="inline-flex items-center gap-2 mt-5 text-sm font-semibold text-primary hover:text-secondary transition-colors">
+                            View Credential
+                            <span class="material-symbols-outlined text-base">open_in_new</span>
+                        </a>
+                    </div>
+
+                    <!-- Course 3 -->
+                    <div class="glass-card p-6 rounded-2xl border-l-4 border-tertiary">
+                        <div class="w-12 h-12 bg-white/5 rounded-lg flex items-center justify-center mb-4 p-2">
+                            <img src="images/Nvidia_logo.svg.png" alt="IBM logo" class="w-8 h-8 object-contain" />
+                        </div>
+
+                        <h4 class="font-bold mb-1">
+                            DGX AI Compute Systems Technical
+                        </h4>
+
+                        <p class="text-xs text-on-surface-variant">
+                            NVIDIA
+                        </p>
+
+                        <a href="courses/DGX AI Compute Systems Technical.pdf" target="_blank" rel="noopener noreferrer"
+                            class="inline-flex items-center gap-2 mt-5 text-sm font-semibold text-primary hover:text-secondary transition-colors">
+                            View Credential
+                            <span class="material-symbols-outlined text-base">open_in_new</span>
+                        </a>
+                    </div>
+
+                    <!-- Course 4 -->
+                    <div class="glass-card p-6 rounded-2xl border-l-4 border-white/20">
+                        <div class="w-12 h-12 bg-white/5 rounded-lg flex items-center justify-center mb-4 p-2">
+                            <img src="images/Nvidia_logo.svg.png" alt="IBM logo" class="w-8 h-8 object-contain" />
+                        </div>
+
+                        <h4 class="font-bold mb-1">
+                            Compute Technical Curriculum
+                        </h4>
+
+                        <p class="text-xs text-on-surface-variant">
+                            NVIDIA
+                        </p>
+
+                        <a href="courses/Compute Technical Curriculum.pdf" target="_blank" rel="noopener noreferrer"
+                            class="inline-flex items-center gap-2 mt-5 text-sm font-semibold text-primary hover:text-secondary transition-colors">
+                            View Credential
+                            <span class="material-symbols-outlined text-base">open_in_new</span>
+                        </a>
+                    </div>
+                    <!-- Course 5 -->
+                    <div class="glass-card p-6 rounded-2xl border-l-4 border-primary">
+                        <div class="w-12 h-12 bg-white/5 rounded-lg flex items-center justify-center mb-4 p-2">
+                            <img src="images/Nvidia_logo.svg.png" alt="AWS logo" class="w-8 h-8 object-contain" />
+                        </div>
+
+                        <h4 class="font-bold mb-1">
+                            DGX AI Compute Systems Installation
+                        </h4>
+                        <p class="text-xs text-on-surface-variant">
+                            Nvidia
+                        </p>
+
+                        <a href="courses/DGX AI Compute Systems Installation.pdf" target="_blank"
+                            rel="noopener noreferrer"
+                            class="inline-flex items-center gap-2 mt-5 text-sm font-semibold text-primary hover:text-secondary transition-colors">
+                            View Credential
+                            <span class="material-symbols-outlined text-base">open_in_new</span>
+                        </a>
+                    </div>
+
+                    <!-- Course 6 -->
+                    <div class="glass-card p-6 rounded-2xl border-l-4 border-secondary">
+                        <div class="w-12 h-12 bg-white/5 rounded-lg flex items-center justify-center mb-4 p-2">
+                            <img src="images/Nvidia_logo.svg.png" alt="AWS logo" class="w-8 h-8 object-contain" />
+                        </div>
+
+                        <h4 class="font-bold mb-1">
+                            DGX Cloud Curriculum
+                        </h4>
+
+                        <p class="text-xs text-on-surface-variant">
+                            Nvidia
+                        </p>
+
+                        <a href="courses/DGX Cloud Curriculum.pdf" target="_blank" rel="noopener noreferrer"
+                            class="inline-flex items-center gap-2 mt-5 text-sm font-semibold text-primary hover:text-secondary transition-colors">
+                            View Credential
+                            <span class="material-symbols-outlined text-base">open_in_new</span>
+                        </a>
+                    </div>
+
+                    <!-- Course 7 -->
+                    <div class="glass-card p-6 rounded-2xl border-l-4 border-tertiary">
+                        <div class="w-12 h-12 bg-white/5 rounded-lg flex items-center justify-center mb-4 p-2">
+                            <img src="images/Nvidia_logo.svg.png" alt="IBM logo" class="w-8 h-8 object-contain" />
+                        </div>
+
+                        <h4 class="font-bold mb-1">
+                            NVIDIA AI Technical Curriculum
+                        </h4>
+
+                        <p class="text-xs text-on-surface-variant">
+                            NVIDIA
+                        </p>
+
+                        <a href="courses/NVIDIA AI Technical Curriculum.pdf" target="_blank" rel="noopener noreferrer"
+                            class="inline-flex items-center gap-2 mt-5 text-sm font-semibold text-primary hover:text-secondary transition-colors">
+                            View Credential
+                            <span class="material-symbols-outlined text-base">open_in_new</span>
+                        </a>
+                    </div>
+
+                    <!-- Course 8 -->
+                    <div class="glass-card p-6 rounded-2xl border-l-4 border-white/20">
+                        <div class="w-12 h-12 bg-white/5 rounded-lg flex items-center justify-center mb-4 p-2">
+                            <img src="images/Nvidia_logo.svg.png" alt="IBM logo" class="w-8 h-8 object-contain" />
+                        </div>
+
+                        <h4 class="font-bold mb-1">
+                            NVIDIA Virtual Desktops Technical Curriculum
+                        </h4>
+
+                        <p class="text-xs text-on-surface-variant">
+                            NVIDIA
+                        </p>
+
+                        <a href="courses/NVIDIA Virtual Desktops Technical Curriculum.pdf" target="_blank"
+                            rel="noopener noreferrer"
+                            class="inline-flex items-center gap-2 mt-5 text-sm font-semibold text-primary hover:text-secondary transition-colors">
+                            View Credential
+                            <span class="material-symbols-outlined text-base">open_in_new</span>
+                        </a>
+                    </div>
+                    <!-- Course 9 -->
+                    <div class="glass-card p-6 rounded-2xl border-l-4 border-primary">
+                        <div class="w-12 h-12 bg-white/5 rounded-lg flex items-center justify-center mb-4 p-2">
+                            <img src="images/Nvidia_logo.svg.png" alt="AWS logo" class="w-8 h-8 object-contain" />
+                        </div>
+
+                        <h4 class="font-bold mb-1">
+                            Networking Technical Curriculum
+                        </h4>
+                        <p class="text-xs text-on-surface-variant">
+                            Nvidia
+                        </p>
+
+                        <a href="courses/Networking Technical Curriculum.pdf" target="_blank" rel="noopener noreferrer"
+                            class="inline-flex items-center gap-2 mt-5 text-sm font-semibold text-primary hover:text-secondary transition-colors">
+                            View Credential
+                            <span class="material-symbols-outlined text-base">open_in_new</span>
+                        </a>
+                    </div>
+
+                    <!-- Course 10 -->
+                    <div class="glass-card p-6 rounded-2xl border-l-4 border-secondary">
+                        <div class="w-12 h-12 bg-white/5 rounded-lg flex items-center justify-center mb-4 p-2">
+                            <img src="images/1630537955921.jpg" alt="AWS logo" class="w-8 h-8 object-contain" />
+                        </div>
+
+                        <h4 class="font-bold mb-1">
+                            Data Analysis Using Excel,Power BI and Copilot
+                        </h4>
+
+                        <p class="text-xs text-on-surface-variant">
+                            Solutions by stc
+                        </p>
+
+                        <a href="courses/Meshari_BinNassar_Data_Analysis_Using_Excel,_Power_BI_and_Copilot.pdf"
+                            target="_blank" rel="noopener noreferrer"
+                            class="inline-flex items-center gap-2 mt-5 text-sm font-semibold text-primary hover:text-secondary transition-colors">
+                            View Credential
+                            <span class="material-symbols-outlined text-base">open_in_new</span>
+                        </a>
+                    </div>
+
+                    <!-- Course 11 -->
+                    <div class="glass-card p-6 rounded-2xl border-l-4 border-tertiary">
+                        <div class="w-12 h-12 bg-white/5 rounded-lg flex items-center justify-center mb-4 p-2">
+                            <img src="images/ibm-logo.png" alt="IBM logo" class="w-8 h-8 object-contain" />
+                        </div>
+
+                        <h4 class="font-bold mb-1">
+                            IBM Data Scinence
+                        </h4>
+
+                        <p class="text-xs text-on-surface-variant">
+                            NVIDIA
+                        </p>
+
+                        <a href="images\IBM.jpg" target="_blank" rel="noopener noreferrer"
+                            class="inline-flex items-center gap-2 mt-5 text-sm font-semibold text-primary hover:text-secondary transition-colors">
+                            View Credential
+                            <span class="material-symbols-outlined text-base">open_in_new</span>
+                        </a>
+                    </div>
+
+                    <!-- Course 12 -->
+                    <div class="glass-card p-6 rounded-2xl border-l-4 border-white/20">
+                        <div class="w-12 h-12 bg-white/5 rounded-lg flex items-center justify-center mb-4 p-2">
+                            <img src="images/Oracle-Logo-PNG-Clipart.png" alt="IBM logo"
+                                class="w-8 h-8 object-contain" />
+                        </div>
+
+                        <h4 class="font-bold mb-1">
+                            Oracle SQL Database
+                        </h4>
+
+                        <p class="text-xs text-on-surface-variant">
+                            Oracel
+                        </p>
+
+                        <a href="courses/SQLOracel.jpg" target="_blank" rel="noopener noreferrer"
+                            class="inline-flex items-center gap-2 mt-5 text-sm font-semibold text-primary hover:text-secondary transition-colors">
+                            View Credential
+                            <span class="material-symbols-outlined text-base">open_in_new</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="py-section-gap px-gutter max-w-container-max mx-auto" id="education">
+            <div class="glass-card p-12 rounded-3xl relative overflow-hidden">
+                <div
+                    class="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2">
+                </div>
+                <div class="relative z-10 flex flex-col md:flex-row gap-12 items-center">
+                    <div
+                        class="w-24 h-24 bg-primary-container/20 rounded-2xl flex items-center justify-center flex-shrink-0 p-3">
+                        <img src="images/LogoI_of_Imam_Mohammad_Ibn_Saud_Islamic_University.png"
+                            alt="Imam Mohammad Ibn Saud Islamic University logo" class="w-20 h-20 object-contain" />
+                    </div>
+                    <div>
+                        <span class="font-label-caps text-label-caps text-secondary tracking-widest block mb-2">ACADEMIC
+                            BACKGROUND</span>
+                        <h2 class="font-headline-md text-headline-md text-on-surface mb-2">Bachelor’s in Information
+                            Technology</h2>
+                        <p class="text-body-lg font-medium text-on-surface-variant">Imam Mohammad Ibn Saud Islamic
+                            University</p>
+                        <div class="flex items-center gap-6 mt-6">
+                            <div class="flex items-center gap-2">
+                                <span class="material-symbols-outlined text-primary">workspace_premium</span>
+                                <span class="font-bold text-xl">Grade: Very Good</span>
+                            </div>
+                            <div class="w-px h-8 bg-outline-variant/30"></div>
+                            <div class="text-on-surface-variant">Aug 2020 – Jun 2025 · Riyadh, Saudi Arabia</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Contact Section -->
+        <section class="py-section-gap px-gutter bg-surface-container-lowest/80 relative" id="contact">
+            <div class="max-w-container-max mx-auto relative z-10">
+                <div class="text-center mb-16">
+                    <h2 class="font-headline-md text-headline-md text-on-surface mb-4">Let's Connect..</h2>
+                    <p class="text-on-surface-variant">Open to opportunities, collaborations, and technical projects in
+                        AI infrastructure, cloud-native systems, and full-stack development.</p>
+                </div>
+                <div class="grid md:grid-cols-2 gap-12">
+                    <div class="space-y-6">
+                        <div class="glass-card p-8 rounded-2xl flex items-center gap-6">
+                            <div
+                                class="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+                                <span class="material-symbols-outlined">mail</span>
+                            </div>
+                            <div>
+                                <p class="font-label-caps text-xs text-on-surface-variant mb-1">EMAIL ME</p>
+                                <a class="text-lg font-bold hover:text-primary transition-colors"
+                                    href="mailto:MshariBinNassar@gmail.com">MshariBinNassar@gmail.com</a>
+                            </div>
+                        </div>
+                        <div class="glass-card p-8 rounded-2xl flex items-center gap-6">
+                            <div
+                                class="w-14 h-14 rounded-full bg-secondary/10 flex items-center justify-center text-secondary">
+                                <span class="material-symbols-outlined">share</span>
+                            </div>
+                            <div>
+                                <p class="font-label-caps text-xs text-on-surface-variant mb-1">LINKEDIN</p>
+                                <a class="text-lg font-bold hover:text-secondary transition-colors"
+                                    href="https://www.linkedin.com/in/mshari-bin-nassar-8a7a1b336/">Meshari Bin
+                                    Nassar</a>
+                            </div>
+                        </div>
+                        <div class="glass-card p-8 rounded-2xl flex items-center gap-6">
+                            <div
+                                class="w-14 h-14 rounded-full bg-tertiary/10 flex items-center justify-center text-tertiary">
+                                <span class="material-symbols-outlined">location_on</span>
+                            </div>
+                            <div>
+                                <p class="font-label-caps text-xs text-on-surface-variant mb-1">LOCATION</p>
+                                <p class="text-lg font-bold">Riyadh, Saudi Arabia</p>
+                            </div>
+                        </div>
+                    </div>
+                    <form class="glass-card p-10 rounded-3xl space-y-6">
+                        <div class="grid grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-xs font-label-caps text-on-surface-variant mb-2">FULL
+                                    NAME</label>
+                                <input
+                                    class="w-full bg-background border border-outline-variant rounded-xl p-4 focus:border-primary focus:ring-0 outline-none transition-colors"
+                                    type="text" />
+                            </div>
+                            <div>
+                                <label class="block text-xs font-label-caps text-on-surface-variant mb-2">EMAIL
+                                    ADDRESS</label>
+                                <input
+                                    class="w-full bg-background border border-outline-variant rounded-xl p-4 focus:border-primary focus:ring-0 outline-none transition-colors"
+                                    type="email" />
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-label-caps text-on-surface-variant mb-2">YOUR
+                                MESSAGE</label>
+                            <textarea
+                                class="w-full bg-background border border-outline-variant rounded-xl p-4 focus:border-primary focus:ring-0 outline-none transition-colors"
+                                rows="5"></textarea>
+                        </div>
+                        <button
+                            class="w-full py-4 bg-primary text-on-primary rounded-xl font-bold glow-primary flex items-center justify-center gap-2"
+                            type="submit">
+                            Send Transmission <span class="material-symbols-outlined">send</span>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+    <!-- Footer (Shared Component) -->
+    <footer class="bg-surface-dim border-t border-outline-variant/30 w-full py-section-gap">
+        <div class="flex flex-col md:flex-row justify-between items-center max-w-container-max mx-auto px-gutter gap-8">
+            <div class="flex flex-col gap-4">
+                <div class="font-display-lg text-body-lg font-bold text-on-surface">Meshari Nassar</div>
+                <p class="text-on-surface-variant font-body-md text-body-md max-w-sm">© 2026 Meshari Nassar. <br />
+                    <span class="whitespace-nowrap">
+                        Built with passion for AI infrastructure and cloud-native systems.
+                    </span>
+                </p>
+            </div>
+            <div class="flex gap-8 items-center">
+                <a class="text-on-surface-variant hover:text-secondary transition-all font-body-md text-body-md"
+                    href="https://www.linkedin.com/in/mshari-bin-nassar-8a7a1b336/">LinkedIn</a>
+                <a class="text-on-surface-variant hover:text-secondary transition-all font-body-md text-body-md"
+                    href="https://github.com/MshariBinNassar">GitHub</a>
+                <a class="text-on-surface-variant hover:text-secondary transition-all font-body-md text-body-md"
+                    href="mailto:MshariBinNassar@gmail.com">Email</a>
+            </div>
+        </div>
+    </footer>
+    <script>
+
+        // Project details modal logic
+        const modalOverlay = document.getElementById('modal-overlay');
+
+        function openModal(modalId) {
+            const modal = document.getElementById(modalId);
+            if (!modalOverlay || !modal) return;
+
+            document.querySelectorAll('#modal-overlay .modal-container-anim').forEach((container) => {
+                container.classList.add('hidden');
+            });
+
+            modal.classList.remove('hidden');
+            modalOverlay.classList.remove('modal-hidden');
+            modalOverlay.classList.add('modal-visible');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            if (!modalOverlay) return;
+
+            modalOverlay.classList.remove('modal-visible');
+            modalOverlay.classList.add('modal-hidden');
+            document.body.style.overflow = '';
+
+            setTimeout(() => {
+                document.querySelectorAll('#modal-overlay .modal-container-anim').forEach((container) => {
+                    container.classList.add('hidden');
+                });
+            }, 350);
+        }
+
+        function handleModalOverlayClick(event) {
+            if (event.target.id === 'modal-overlay') {
+                closeModal();
+            }
+        }
+
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape') {
+                closeModal();
+            }
+        });
+
+        // Simple scroll spy for navigation active state
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('nav a');
+
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (pageYOffset >= sectionTop - 100) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('text-primary', 'font-semibold', 'border-b-2', 'border-primary', 'pb-1');
+                link.classList.add('text-on-surface-variant', 'font-medium');
+                if (link.getAttribute('href').includes(current)) {
+                    link.classList.add('text-primary', 'font-semibold', 'border-b-2', 'border-primary', 'pb-1');
+                    link.classList.remove('text-on-surface-variant', 'font-medium');
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
