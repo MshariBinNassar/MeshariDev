@@ -262,9 +262,92 @@
             box-shadow: 0 0 0 4px rgba(173,198,255,.08), 0 14px 34px rgba(0,0,0,.18);
         }
 
+        /* Direct-view certification badges */
+        .certificate-card {
+            position: relative; min-width: 0;
+            background: linear-gradient(145deg,rgba(25,31,47,.9),rgba(8,14,29,.82));
+            border: 1px solid rgba(173,198,255,.14);
+            border-radius: 26px; padding: 10px;
+            transition: opacity .25s ease, transform .25s ease, border-color .25s ease, box-shadow .25s ease;
+        }
+        .certificate-card::after {
+            content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none;
+            background: linear-gradient(115deg,transparent 30%,rgba(255,255,255,.08) 48%,transparent 66%);
+            transform: translateX(-120%); transition: transform .75s ease;
+        }
+        .certificate-card:hover::after { transform: translateX(120%); }
+        .certificate-card:hover {
+            border-color: rgba(76,215,246,.42);
+            box-shadow: 0 24px 70px rgba(0,0,0,.35),0 0 46px rgba(76,215,246,.11);
+        }
+        .badge-stage {
+            position: relative; overflow: hidden; isolation: isolate;
+            aspect-ratio: 1.414 / 1; display: grid; place-items: center;
+            border-radius: 20px;
+            background:
+                radial-gradient(circle at 50% 40%,var(--badge-glow,rgba(76,215,246,.2)),transparent 43%),
+                linear-gradient(135deg,rgba(3,10,25,.97),rgba(8,22,43,.9));
+            border: 1px solid rgba(173,198,255,.13);
+        }
+        .badge-stage::before {
+            content: ""; position: absolute; inset: 0; z-index: 2; pointer-events: none;
+            box-shadow: inset 0 0 0 1px rgba(255,255,255,.07), inset 0 -55px 60px rgba(2,6,23,.22);
+        }
+        .certificate-document {
+            width: 100%; height: 100%; display: block; border: 0; pointer-events: none;
+            background: #fff; object-fit: contain; object-position: center;
+            transition: transform .55s cubic-bezier(.2,.75,.25,1), filter .35s ease;
+        }
+        .certificate-card:hover .certificate-document { transform: scale(1.035); filter: brightness(.82); }
+        .certificate-preview-link {
+            position: absolute; inset: 0; z-index: 4; display: grid; place-items: end center;
+            padding: 18px; cursor: zoom-in; text-decoration: none;
+        }
+        .certificate-preview-action {
+            display: inline-flex; align-items: center; gap: 7px; padding: 10px 14px;
+            border-radius: 999px; color: #edf5ff; font-size: 12px; font-weight: 700;
+            background: rgba(8,14,29,.84); border: 1px solid rgba(173,198,255,.25);
+            backdrop-filter: blur(14px); box-shadow: 0 12px 30px rgba(0,0,0,.32);
+            opacity: 0; transform: translateY(10px); transition: opacity .25s ease, transform .25s ease;
+        }
+        .certificate-card:hover .certificate-preview-action,
+        .certificate-preview-link:focus-visible .certificate-preview-action { opacity: 1; transform: translateY(0); }
+        .document-fallback {
+            width: 100%; height: 100%; display: grid; place-items: center; padding: 28px;
+            color: #c2c6d6; text-align: center; background: #0b1425;
+        }
+        .certificate-content { padding: 20px 14px 12px; }
+        .certificate-provider {
+            display: flex; align-items: center; gap: 8px; margin-bottom: 10px;
+            color: #4cd7f6; font: 500 10px/1 JetBrains Mono,monospace;
+            letter-spacing: .14em; text-transform: uppercase;
+        }
+        .certificate-provider::before {
+            content: ""; width: 7px; height: 7px; border-radius: 50%;
+            background: var(--badge-color,#4cd7f6); box-shadow: 0 0 12px var(--badge-color,#4cd7f6);
+        }
+        .certificate-title { min-height: 3.25rem; color: #edf2ff; font: 700 16px/1.55 Sora,sans-serif; }
+        .certificate-meta { margin-top: 8px; color: #9299ad; font-size: 12px; }
+        .credential-link {
+            position: relative; z-index: 3; display: inline-flex; align-items: center; gap: 7px;
+            margin-top: 15px; color: #adc6ff; font-size: 12px; font-weight: 700;
+        }
+        .credential-link:hover { color: #4cd7f6; }
+        .course-card .certificate-title { min-height: 4.75rem; }
+
+        #cursor-glow {
+            position: fixed; z-index: 20; width: 320px; height: 320px; border-radius: 50%;
+            pointer-events: none; opacity: 0; transform: translate(-50%,-50%);
+            background: radial-gradient(circle,rgba(76,215,246,.065),transparent 66%);
+            transition: opacity .25s ease; mix-blend-mode: screen;
+        }
+        body:hover #cursor-glow { opacity: 1; }
+
         @media (max-width: 767px) {
 #rotating-phrase { min-width: 0; }
             #back-to-top { right: 16px; bottom: 16px; }
+            .certificate-preview-action { opacity: 1; transform: none; padding: 8px 12px; }
+            #cursor-glow { display: none; }
         }
 
         @media (prefers-reduced-motion: reduce) {
@@ -366,6 +449,7 @@
     </script>
 </head>
 <body class="bg-background selection:bg-primary/30 scroll-smooth">
+<div aria-hidden="true" id="cursor-glow"></div>
 <!-- TopNavBar (Interactive Component) -->
 <div aria-hidden="true" id="scroll-progress"></div>
 <header class="site-header fixed top-0 w-full z-50 bg-surface/60 backdrop-blur-3xl border-b border-white/10 shadow-[0_0_30px_rgba(173,198,255,0.14)]" id="site-header">
@@ -373,27 +457,31 @@
 <a class="brand-mark font-display-lg text-xl md:text-headline-md font-bold text-on-surface tracking-tight" href="#home">
                 Meshari Naif Bin Nassar
             </a>
-<div class="hidden md:flex gap-7 items-center">
+<div class="hidden xl:flex gap-6 items-center">
 <a class="nav-link text-primary font-semibold font-body-md text-body-md" data-nav-link="" href="#home">Home</a>
 <a class="nav-link text-on-surface-variant font-medium hover:text-primary transition-colors" data-nav-link="" href="#about">About</a>
 <a class="nav-link text-on-surface-variant font-medium hover:text-primary transition-colors" data-nav-link="" href="#experience">Experience</a>
 <a class="nav-link text-on-surface-variant font-medium hover:text-primary transition-colors" data-nav-link="" href="#projects">Projects</a>
+<a class="nav-link text-on-surface-variant font-medium hover:text-primary transition-colors" data-nav-link="" href="#certifications">Certifications</a>
+<a class="nav-link text-on-surface-variant font-medium hover:text-primary transition-colors" data-nav-link="" href="#courses">Courses</a>
 <a class="nav-link text-on-surface-variant font-medium hover:text-primary transition-colors" data-nav-link="" href="#skills">Skills</a>
 <a class="nav-link text-on-surface-variant font-medium hover:text-primary transition-colors" data-nav-link="" href="#contact">Contact</a>
 <a class="ripple-target bg-primary-container text-on-primary-container px-6 py-2 rounded-full font-semibold active:scale-95 transition-transform" download="" href="CV/MeshariBinNassarCV.pdf">
                     Download CV
                 </a>
 </div>
-<button aria-controls="mobile-menu" aria-expanded="false" aria-label="Open navigation menu" class="md:hidden w-11 h-11 glass-card rounded-xl flex items-center justify-center text-on-surface" id="mobile-menu-button" type="button">
+<button aria-controls="mobile-menu" aria-expanded="false" aria-label="Open navigation menu" class="xl:hidden w-11 h-11 glass-card rounded-xl flex items-center justify-center text-on-surface" id="mobile-menu-button" type="button">
 <span class="material-symbols-outlined" id="mobile-menu-icon">menu</span>
 </button>
 </nav>
-<div class="md:hidden bg-surface-container-lowest/95 backdrop-blur-2xl border-t border-white/10" id="mobile-menu">
+<div class="xl:hidden bg-surface-container-lowest/95 backdrop-blur-2xl border-t border-white/10" id="mobile-menu">
 <div class="max-w-container-max mx-auto px-gutter py-5 flex flex-col gap-2">
 <a class="mobile-nav-link px-4 py-3 rounded-xl hover:bg-white/5" href="#home">Home</a>
 <a class="mobile-nav-link px-4 py-3 rounded-xl hover:bg-white/5" href="#about">About</a>
 <a class="mobile-nav-link px-4 py-3 rounded-xl hover:bg-white/5" href="#experience">Experience</a>
 <a class="mobile-nav-link px-4 py-3 rounded-xl hover:bg-white/5" href="#projects">Projects</a>
+<a class="mobile-nav-link px-4 py-3 rounded-xl hover:bg-white/5" href="#certifications">Certifications</a>
+<a class="mobile-nav-link px-4 py-3 rounded-xl hover:bg-white/5" href="#courses">Courses</a>
 <a class="mobile-nav-link px-4 py-3 rounded-xl hover:bg-white/5" href="#skills">Skills</a>
 <a class="mobile-nav-link px-4 py-3 rounded-xl hover:bg-white/5" href="#contact">Contact</a>
 <a class="ripple-target mt-2 text-center bg-primary-container text-on-primary-container px-6 py-3 rounded-xl font-semibold" download="" href="CV/MeshariBinNassarCV.pdf">
@@ -463,7 +551,7 @@
                         </p>
 <div class="grid grid-cols-2 md:grid-cols-4 gap-6 pt-8 border-t border-outline-variant/30">
 <div>
-<div class="text-primary font-display-lg text-headline-md"><span class="counter" data-count="6">0</span></div>
+<div class="text-primary font-display-lg text-headline-md"><span class="counter" data-count="7">0</span></div>
 <div class="font-label-caps text-label-caps text-on-surface-variant">Certifications</div>
 </div>
 <div>
@@ -842,68 +930,258 @@
 <!-- Certifications -->
 <section class="py-section-gap px-gutter bg-surface-container-lowest" id="certifications">
 <div class="max-w-container-max mx-auto">
-<h2 class="font-headline-md text-headline-md text-on-surface mb-12 text-center">
-                    Certifications
-                </h2>
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-<div class="glass-card p-6 rounded-2xl border-l-4 border-primary">
-<div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
-<img alt="Oracle logo" class="w-8 h-8 object-contain" src="images/ORCL-d5a587ae.png"/>
+<div class="text-center max-w-2xl mx-auto mb-9">
+<span class="font-label-caps text-label-caps text-secondary uppercase tracking-widest">Verified learning</span>
+<h2 class="font-headline-md text-headline-md text-on-surface mt-4 mb-4">Certification Badges</h2>
+<p class="text-on-surface-variant">Each original certificate is displayed directly. Select a preview to open the full PDF or image.</p>
 </div>
-<h4 class="font-bold mb-1">Oracle Cloud Infrastructure 2025 Generative AI Professional – 1Z0-1127-25</h4>
-<p class="text-xs text-on-surface-variant">Oracle · Nov 2025</p>
-<a class="inline-flex items-center gap-2 mt-5 text-sm font-semibold text-primary hover:text-secondary transition-colors" href="https://catalog-education.oracle.com/pls/certview/sharebadge?id=BCB81ECC7A252B2607AF2FE4097F9225C8CA394EDB85DEE16D1CF3F55DBF3771" rel="noopener noreferrer" target="_blank">
-                            View Credential <span class="material-symbols-outlined text-base">open_in_new</span>
-</a>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="certificate-grid">
+
+<article class="certificate-card" data-certificate-card data-provider="oracle" style="--badge-color:#f15a29;--badge-glow:rgba(241,90,41,.24)">
+<div class="badge-stage">
+<img alt="Oracle Generative AI Professional certificate preview" class="certificate-document" loading="lazy" src="Certificates/previews/Oracle_Cloud_Infrastructure_2025_Certified_Generative_AI_Professional.jpg"/>
+<a aria-label="Open Oracle Generative AI Professional certificate" class="certificate-preview-link" href="Certificates/Oracle_Cloud_Infrastructure_2025_Certified_Generative_AI_Professional.pdf" target="_blank"><span class="certificate-preview-action">Open certificate <span class="material-symbols-outlined text-base">open_in_new</span></span></a>
 </div>
-<div class="glass-card p-6 rounded-2xl border-l-4 border-secondary">
-<div class="w-12 h-12 bg-secondary/10 rounded-lg flex items-center justify-center mb-4">
-<img alt="Oracle logo" class="w-8 h-8 object-contain" src="images/ORCL-d5a587ae.png"/>
+<div class="certificate-content">
+<div class="certificate-provider">Oracle Cloud Infrastructure</div>
+<h3 class="certificate-title">OCI 2025 Generative AI Professional</h3>
+<p class="certificate-meta">Professional · Issued Nov 2025</p>
+<a class="credential-link" href="https://catalog-education.oracle.com/pls/certview/sharebadge?id=BCB81ECC7A252B2607AF2FE4097F9225C8CA394EDB85DEE16D1CF3F55DBF3771"><span>Verify credential</span><span class="material-symbols-outlined text-base">open_in_new</span></a>
 </div>
-<h4 class="font-bold mb-1">Oracle Cloud Infrastructure 2025 Architect Associate – 1Z0-1072-25</h4>
-<p class="text-xs text-on-surface-variant">Oracle · Oct 2025</p>
-<a class="inline-flex items-center gap-2 mt-5 text-sm font-semibold text-primary hover:text-secondary transition-colors" href="https://catalog-education.oracle.com/pls/certview/sharebadge?id=59F6C493817BF4EE9D9026F16A79E265AF0DC1D93DD843DFE13AC7E21B53DFEA" rel="noopener noreferrer" target="_blank">
-                            View Credential <span class="material-symbols-outlined text-base">open_in_new</span>
-</a>
+</article>
+
+<article class="certificate-card" data-certificate-card data-provider="oracle" style="--badge-color:#ef6c35;--badge-glow:rgba(239,108,53,.22)">
+<div class="badge-stage">
+<img alt="Oracle Architect Associate certificate preview" class="certificate-document" loading="lazy" src="Certificates/previews/Oracle_Cloud_Infrastructure_2025_Certified_Architect_Associate.jpg"/>
+<a aria-label="Open Oracle Architect Associate certificate" class="certificate-preview-link" href="Certificates/Oracle_Cloud_Infrastructure_2025_Certified_Architect_Associate.pdf" target="_blank"><span class="certificate-preview-action">Open certificate <span class="material-symbols-outlined text-base">open_in_new</span></span></a>
 </div>
-<div class="glass-card p-6 rounded-2xl border-l-4 border-tertiary">
-<div class="w-12 h-12 bg-tertiary/10 rounded-lg flex items-center justify-center mb-4">
-<img alt="AWS logo" class="w-8 h-8 object-contain" src="images/Amazon_Web_Services_Logo.svg.png"/>
+<div class="certificate-content">
+<div class="certificate-provider">Oracle Cloud Infrastructure</div>
+<h3 class="certificate-title">OCI 2025 Architect Associate</h3>
+<p class="certificate-meta">Associate · Issued Oct 2025</p>
+<a class="credential-link" href="https://catalog-education.oracle.com/pls/certview/sharebadge?id=59F6C493817BF4EE9D9026F16A79E265AF0DC1D93DD843DFE13AC7E21B53DFEA"><span>Verify credential</span><span class="material-symbols-outlined text-base">open_in_new</span></a>
 </div>
-<h4 class="font-bold mb-1">AWS Certified: AI Practitioner – AIF-C01</h4>
-<p class="text-xs text-on-surface-variant">Amazon Web Services · Jun 2026</p>
+</article>
+
+<article class="certificate-card" data-certificate-card data-provider="aws" style="--badge-color:#ff9900;--badge-glow:rgba(255,153,0,.24)">
+<div class="badge-stage">
+<img alt="AWS Machine Learning Engineer Associate certificate preview" class="certificate-document" loading="lazy" src="Certificates/previews/AWS%20Certified%20Machine%20Learning%20Engineer%20-%20Associate%20certificate.jpg"/>
+<a aria-label="Open AWS Machine Learning Engineer Associate certificate" class="certificate-preview-link" href="Certificates/AWS%20Certified%20Machine%20Learning%20Engineer%20-%20Associate%20certificate.pdf" target="_blank"><span class="certificate-preview-action">Open certificate <span class="material-symbols-outlined text-base">open_in_new</span></span></a>
 </div>
-<div class="glass-card p-6 rounded-2xl border-l-4 border-primary/60">
-<div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
-<img alt="Microsoft Azure logo" class="w-8 h-8 object-contain" src="images/azurelogo.png"/>
+<div class="certificate-content">
+<div class="certificate-provider">Amazon Web Services</div>
+<h3 class="certificate-title">AWS Certified Machine Learning Engineer – Associate</h3>
+<p class="certificate-meta">Associate · Issued Jul 2026</p>
 </div>
-<h4 class="font-bold mb-1">Microsoft Certified: Azure Fundamentals – AZ-900</h4>
-<p class="text-xs text-on-surface-variant">Microsoft · Oct 2025</p>
-<a class="inline-flex items-center gap-2 mt-5 text-sm font-semibold text-primary hover:text-secondary transition-colors" href="https://learn.microsoft.com/api/credentials/share/en-us/MeshariNBinNassar-0858/615E7ADB1619A4D?sharingId=3BE74A778227B5BC" rel="noopener noreferrer" target="_blank">
-                            View Credential <span class="material-symbols-outlined text-base">open_in_new</span>
-</a>
+</article>
+
+<article class="certificate-card" data-certificate-card data-provider="aws" style="--badge-color:#9b70ff;--badge-glow:rgba(155,112,255,.24)">
+<div class="badge-stage">
+<img alt="AWS AI Practitioner certificate preview" class="certificate-document" loading="lazy" src="Certificates/previews/AWS%20Certified%20AI%20Practitioner%20certificate.jpg"/>
+<a aria-label="Open AWS AI Practitioner certificate" class="certificate-preview-link" href="Certificates/AWS%20Certified%20AI%20Practitioner%20certificate.pdf" target="_blank"><span class="certificate-preview-action">Open certificate <span class="material-symbols-outlined text-base">open_in_new</span></span></a>
 </div>
-<div class="glass-card p-6 rounded-2xl border-l-4 border-secondary/60">
-<div class="w-12 h-12 bg-secondary/10 rounded-lg flex items-center justify-center mb-4">
-<img alt="Oracle logo" class="w-8 h-8 object-contain" src="images/ORCL-d5a587ae.png"/>
+<div class="certificate-content">
+<div class="certificate-provider">Amazon Web Services</div>
+<h3 class="certificate-title">AWS Certified AI Practitioner</h3>
+<p class="certificate-meta">Foundational · Issued Jun 2026</p>
 </div>
-<h4 class="font-bold mb-1">Oracle Cloud Infrastructure 2025 AI Foundations Associate – 1Z0-1122-25</h4>
-<p class="text-xs text-on-surface-variant">Oracle · Oct 2025</p>
-<a class="inline-flex items-center gap-2 mt-5 text-sm font-semibold text-primary hover:text-secondary transition-colors" href="https://catalog-education.oracle.com/pls/certview/sharebadge?id=C31C67CC09210FB3DC6DCC68110D02E7C35A7DE4DBE1C0158778B2F3C0A11BD9" rel="noopener noreferrer" target="_blank">
-                            View Credential <span class="material-symbols-outlined text-base">open_in_new</span>
-</a>
+</article>
+
+<article class="certificate-card" data-certificate-card data-provider="microsoft" style="--badge-color:#36a6e8;--badge-glow:rgba(54,166,232,.24)">
+<div class="badge-stage">
+<img alt="Microsoft Certified Azure Fundamentals certificate" class="certificate-document" loading="lazy" src="Certificates/AZ-900.jpg"/>
+<a aria-label="Open Microsoft Azure Fundamentals certificate" class="certificate-preview-link" href="Certificates/AZ-900.jpg" target="_blank"><span class="certificate-preview-action">Open certificate <span class="material-symbols-outlined text-base">open_in_new</span></span></a>
 </div>
-<div class="glass-card p-6 rounded-2xl border-l-4 border-white/20">
-<div class="w-12 h-12 bg-white/5 rounded-lg flex items-center justify-center mb-4">
-<img alt="Oracle logo" class="w-8 h-8 object-contain" src="images/ORCL-d5a587ae.png"/>
+<div class="certificate-content">
+<div class="certificate-provider">Microsoft Azure</div>
+<h3 class="certificate-title">Microsoft Certified: Azure Fundamentals</h3>
+<p class="certificate-meta">Fundamentals · Issued Oct 2025</p>
+<a class="credential-link" href="https://learn.microsoft.com/api/credentials/share/en-us/MeshariNBinNassar-0858/615E7ADB1619A4D?sharingId=3BE74A778227B5BC"><span>Verify credential</span><span class="material-symbols-outlined text-base">open_in_new</span></a>
 </div>
-<h4 class="font-bold mb-1">Oracle Cloud Infrastructure 2025 Foundations Associate – 1Z0-1085-25</h4>
-<p class="text-xs text-on-surface-variant">Oracle · Oct 2025</p>
-<a class="inline-flex items-center gap-2 mt-5 text-sm font-semibold text-primary hover:text-secondary transition-colors" href="https://catalog-education.oracle.com/pls/certview/sharebadge?id=0BD48AD13D8833A37CFF68F850144CF07DFB96DDDDF77AD79BA89A71B663F5AE" rel="noopener noreferrer" target="_blank">
-                            View Credential <span class="material-symbols-outlined text-base">open_in_new</span>
-</a>
+</article>
+
+<article class="certificate-card" data-certificate-card data-provider="oracle" style="--badge-color:#ec713e;--badge-glow:rgba(236,113,62,.22)">
+<div class="badge-stage">
+<img alt="Oracle AI Foundations Associate certificate preview" class="certificate-document" loading="lazy" src="Certificates/previews/Oracle_Cloud_Infrastructure_2025_Certified_AI_Foundations_Associate.jpg"/>
+<a aria-label="Open Oracle AI Foundations Associate certificate" class="certificate-preview-link" href="Certificates/Oracle_Cloud_Infrastructure_2025_Certified_AI_Foundations_Associate.pdf" target="_blank"><span class="certificate-preview-action">Open certificate <span class="material-symbols-outlined text-base">open_in_new</span></span></a>
+</div>
+<div class="certificate-content">
+<div class="certificate-provider">Oracle Cloud Infrastructure</div>
+<h3 class="certificate-title">OCI 2025 AI Foundations Associate</h3>
+<p class="certificate-meta">Associate · Issued Oct 2025</p>
+<a class="credential-link" href="https://catalog-education.oracle.com/pls/certview/sharebadge?id=C31C67CC09210FB3DC6DCC68110D02E7C35A7DE4DBE1C0158778B2F3C0A11BD9"><span>Verify credential</span><span class="material-symbols-outlined text-base">open_in_new</span></a>
+</div>
+</article>
+
+<article class="certificate-card" data-certificate-card data-provider="oracle" style="--badge-color:#d85f32;--badge-glow:rgba(216,95,50,.22)">
+<div class="badge-stage">
+<img alt="Oracle Foundations Associate certificate preview" class="certificate-document" loading="lazy" src="Certificates/previews/Oracle_Cloud_Infrastructure_2025_Certified_Foundations_Associate.jpg"/>
+<a aria-label="Open Oracle Foundations Associate certificate" class="certificate-preview-link" href="Certificates/Oracle_Cloud_Infrastructure_2025_Certified_Foundations_Associate.pdf" target="_blank"><span class="certificate-preview-action">Open certificate <span class="material-symbols-outlined text-base">open_in_new</span></span></a>
+</div>
+<div class="certificate-content">
+<div class="certificate-provider">Oracle Cloud Infrastructure</div>
+<h3 class="certificate-title">OCI 2025 Foundations Associate</h3>
+<p class="certificate-meta">Associate · Issued Oct 2025</p>
+<a class="credential-link" href="https://catalog-education.oracle.com/pls/certview/sharebadge?id=0BD48AD13D8833A37CFF68F850144CF07DFB96DDDDF77AD79BA89A71B663F5AE"><span>Verify credential</span><span class="material-symbols-outlined text-base">open_in_new</span></a>
+</div>
+</article>
+
 </div>
 </div>
+</section>
+<!-- Courses -->
+<section class="py-section-gap px-gutter max-w-container-max mx-auto" id="courses">
+<div class="text-center max-w-2xl mx-auto mb-9">
+<span class="font-label-caps text-label-caps text-secondary uppercase tracking-widest">Training archive</span>
+<h2 class="font-headline-md text-headline-md text-on-surface mt-4 mb-4">Courses</h2>
+<p class="text-on-surface-variant">Course completion certificates and technical learning records. Select a preview to open the full file.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="courses-grid">
+
+<article class="certificate-card course-card" style="--badge-color:#ff9900;--badge-glow:rgba(255,153,0,.24)">
+<div class="badge-stage">
+<img alt="AWS Generative AI course preview" class="certificate-document" loading="lazy" src="courses/previews/AMAZON_WEB_SERVICES_DGAIA_1485302.jpg"/>
+<a aria-label="Open AWS Generative AI course" class="certificate-preview-link" href="courses/AMAZON_WEB_SERVICES_DGAIA_1485302.pdf" target="_blank" rel="noopener"><span class="certificate-preview-action">Open course <span class="material-symbols-outlined text-base">open_in_new</span></span></a>
+</div>
+<div class="certificate-content">
+<div class="certificate-provider">Amazon Web Services</div>
+<h3 class="certificate-title">AWS Generative AI Accreditation</h3>
+<p class="certificate-meta">Digital training certificate</p>
+</div>
+</article>
+
+<article class="certificate-card course-card" style="--badge-color:#ff9900;--badge-glow:rgba(255,153,0,.24)">
+<div class="badge-stage">
+<img alt="AWS Machine Learning course preview" class="certificate-document" loading="lazy" src="courses/previews/AMAZON_WEB_SERVICES_MLEA_1480721%20%281%29.jpg"/>
+<a aria-label="Open AWS Machine Learning course" class="certificate-preview-link" href="courses/AMAZON_WEB_SERVICES_MLEA_1480721%20%281%29.pdf" target="_blank" rel="noopener"><span class="certificate-preview-action">Open course <span class="material-symbols-outlined text-base">open_in_new</span></span></a>
+</div>
+<div class="certificate-content">
+<div class="certificate-provider">Amazon Web Services</div>
+<h3 class="certificate-title">AWS Machine Learning Engineer Associate Training</h3>
+<p class="certificate-meta">Digital training certificate</p>
+</div>
+</article>
+
+<article class="certificate-card course-card" style="--badge-color:#76b900;--badge-glow:rgba(118,185,0,.25)">
+<div class="badge-stage">
+<img alt="NVIDIA AI Technical Curriculum preview" class="certificate-document" loading="lazy" src="courses/previews/NVIDIA%20AI%20Technical%20Curriculum.jpg"/>
+<a aria-label="Open NVIDIA AI Technical Curriculum course" class="certificate-preview-link" href="courses/NVIDIA%20AI%20Technical%20Curriculum.pdf" target="_blank" rel="noopener"><span class="certificate-preview-action">Open course <span class="material-symbols-outlined text-base">open_in_new</span></span></a>
+</div>
+<div class="certificate-content">
+<div class="certificate-provider">NVIDIA</div>
+<h3 class="certificate-title">NVIDIA AI Technical Curriculum</h3>
+<p class="certificate-meta">Technical curriculum</p>
+</div>
+</article>
+
+<article class="certificate-card course-card" style="--badge-color:#76b900;--badge-glow:rgba(118,185,0,.25)">
+<div class="badge-stage">
+<img alt="NVIDIA Cloud Technologies course preview" class="certificate-document" loading="lazy" src="courses/previews/Cloud%20NVIDIA%20Technologies%20Technical.jpg"/>
+<a aria-label="Open NVIDIA Cloud Technologies course" class="certificate-preview-link" href="courses/Cloud%20NVIDIA%20Technologies%20Technical.pdf" target="_blank" rel="noopener"><span class="certificate-preview-action">Open course <span class="material-symbols-outlined text-base">open_in_new</span></span></a>
+</div>
+<div class="certificate-content">
+<div class="certificate-provider">NVIDIA</div>
+<h3 class="certificate-title">Cloud NVIDIA Technologies Technical</h3>
+<p class="certificate-meta">Technical curriculum</p>
+</div>
+</article>
+
+<article class="certificate-card course-card" style="--badge-color:#76b900;--badge-glow:rgba(118,185,0,.25)">
+<div class="badge-stage">
+<img alt="NVIDIA Compute Technical Curriculum preview" class="certificate-document" loading="lazy" src="courses/previews/Compute%20Technical%20Curriculum.jpg"/>
+<a aria-label="Open NVIDIA Compute Technical Curriculum course" class="certificate-preview-link" href="courses/Compute%20Technical%20Curriculum.pdf" target="_blank" rel="noopener"><span class="certificate-preview-action">Open course <span class="material-symbols-outlined text-base">open_in_new</span></span></a>
+</div>
+<div class="certificate-content">
+<div class="certificate-provider">NVIDIA</div>
+<h3 class="certificate-title">Compute Technical Curriculum</h3>
+<p class="certificate-meta">Technical curriculum</p>
+</div>
+</article>
+
+<article class="certificate-card course-card" style="--badge-color:#76b900;--badge-glow:rgba(118,185,0,.25)">
+<div class="badge-stage">
+<img alt="NVIDIA DGX AI Compute Systems Installation preview" class="certificate-document" loading="lazy" src="courses/previews/DGX%20AI%20Compute%20Systems%20Installation.jpg"/>
+<a aria-label="Open NVIDIA DGX AI Compute Systems Installation course" class="certificate-preview-link" href="courses/DGX%20AI%20Compute%20Systems%20Installation.pdf" target="_blank" rel="noopener"><span class="certificate-preview-action">Open course <span class="material-symbols-outlined text-base">open_in_new</span></span></a>
+</div>
+<div class="certificate-content">
+<div class="certificate-provider">NVIDIA</div>
+<h3 class="certificate-title">DGX AI Compute Systems Installation</h3>
+<p class="certificate-meta">Technical curriculum</p>
+</div>
+</article>
+
+<article class="certificate-card course-card" style="--badge-color:#76b900;--badge-glow:rgba(118,185,0,.25)">
+<div class="badge-stage">
+<img alt="NVIDIA DGX AI Compute Systems Technical preview" class="certificate-document" loading="lazy" src="courses/previews/DGX%20AI%20Compute%20Systems%20Technical.jpg"/>
+<a aria-label="Open NVIDIA DGX AI Compute Systems Technical course" class="certificate-preview-link" href="courses/DGX%20AI%20Compute%20Systems%20Technical.pdf" target="_blank" rel="noopener"><span class="certificate-preview-action">Open course <span class="material-symbols-outlined text-base">open_in_new</span></span></a>
+</div>
+<div class="certificate-content">
+<div class="certificate-provider">NVIDIA</div>
+<h3 class="certificate-title">DGX AI Compute Systems Technical</h3>
+<p class="certificate-meta">Technical curriculum</p>
+</div>
+</article>
+
+<article class="certificate-card course-card" style="--badge-color:#76b900;--badge-glow:rgba(118,185,0,.25)">
+<div class="badge-stage">
+<img alt="NVIDIA DGX Cloud Curriculum preview" class="certificate-document" loading="lazy" src="courses/previews/DGX%20Cloud%20Curriculum.jpg"/>
+<a aria-label="Open NVIDIA DGX Cloud Curriculum course" class="certificate-preview-link" href="courses/DGX%20Cloud%20Curriculum.pdf" target="_blank" rel="noopener"><span class="certificate-preview-action">Open course <span class="material-symbols-outlined text-base">open_in_new</span></span></a>
+</div>
+<div class="certificate-content">
+<div class="certificate-provider">NVIDIA</div>
+<h3 class="certificate-title">DGX Cloud Curriculum</h3>
+<p class="certificate-meta">Technical curriculum</p>
+</div>
+</article>
+
+<article class="certificate-card course-card" style="--badge-color:#76b900;--badge-glow:rgba(118,185,0,.25)">
+<div class="badge-stage">
+<img alt="NVIDIA Networking Technical Curriculum preview" class="certificate-document" loading="lazy" src="courses/previews/Networking%20Technical%20Curriculum.jpg"/>
+<a aria-label="Open NVIDIA Networking Technical Curriculum course" class="certificate-preview-link" href="courses/Networking%20Technical%20Curriculum.pdf" target="_blank" rel="noopener"><span class="certificate-preview-action">Open course <span class="material-symbols-outlined text-base">open_in_new</span></span></a>
+</div>
+<div class="certificate-content">
+<div class="certificate-provider">NVIDIA</div>
+<h3 class="certificate-title">Networking Technical Curriculum</h3>
+<p class="certificate-meta">Technical curriculum</p>
+</div>
+</article>
+
+<article class="certificate-card course-card" style="--badge-color:#76b900;--badge-glow:rgba(118,185,0,.25)">
+<div class="badge-stage">
+<img alt="NVIDIA Virtual Desktops Technical Curriculum preview" class="certificate-document" loading="lazy" src="courses/previews/NVIDIA%20Virtual%20Desktops%20Technical%20Curriculum.jpg"/>
+<a aria-label="Open NVIDIA Virtual Desktops Technical Curriculum course" class="certificate-preview-link" href="courses/NVIDIA%20Virtual%20Desktops%20Technical%20Curriculum.pdf" target="_blank" rel="noopener"><span class="certificate-preview-action">Open course <span class="material-symbols-outlined text-base">open_in_new</span></span></a>
+</div>
+<div class="certificate-content">
+<div class="certificate-provider">NVIDIA</div>
+<h3 class="certificate-title">NVIDIA Virtual Desktops Technical Curriculum</h3>
+<p class="certificate-meta">Technical curriculum</p>
+</div>
+</article>
+
+<article class="certificate-card course-card" style="--badge-color:#36a6e8;--badge-glow:rgba(54,166,232,.24)">
+<div class="badge-stage">
+<img alt="Data Analysis Using Excel Power BI and Copilot preview" class="certificate-document" loading="lazy" src="courses/previews/Meshari_BinNassar_Data_Analysis_Using_Excel%2C_Power_BI_and_Copilot.jpg"/>
+<a aria-label="Open Data Analysis Using Excel Power BI and Copilot course" class="certificate-preview-link" href="courses/Meshari_BinNassar_Data_Analysis_Using_Excel%2C_Power_BI_and_Copilot.pdf" target="_blank" rel="noopener"><span class="certificate-preview-action">Open course <span class="material-symbols-outlined text-base">open_in_new</span></span></a>
+</div>
+<div class="certificate-content">
+<div class="certificate-provider">Microsoft</div>
+<h3 class="certificate-title">Data Analysis Using Excel, Power BI and Copilot</h3>
+<p class="certificate-meta">Analytics course</p>
+</div>
+</article>
+
+<article class="certificate-card course-card" style="--badge-color:#ec713e;--badge-glow:rgba(236,113,62,.22)">
+<div class="badge-stage">
+<img alt="Oracle SQL course preview" class="certificate-document" loading="lazy" src="courses/SQLOracel.jpg"/>
+<a aria-label="Open Oracle SQL course" class="certificate-preview-link" href="courses/SQLOracel.jpg" target="_blank" rel="noopener"><span class="certificate-preview-action">Open course <span class="material-symbols-outlined text-base">open_in_new</span></span></a>
+</div>
+<div class="certificate-content">
+<div class="certificate-provider">Oracle</div>
+<h3 class="certificate-title">SQL Oracle Course</h3>
+<p class="certificate-meta">Database course</p>
+</div>
+</article>
+
 </div>
 </section>
 <!-- Skills -->
@@ -1116,6 +1394,19 @@ const menuButton = document.getElementById("mobile-menu-button");
             const menu = document.getElementById("mobile-menu");
             const menuIcon = document.getElementById("mobile-menu-icon");
             const toast = document.getElementById("toast");
+            const cursorGlow = document.getElementById("cursor-glow");
+
+            if (cursorGlow && !reducedMotion) {
+                let pointerFrame = 0;
+                addEventListener("pointermove", event => {
+                    if (event.pointerType === "touch") return;
+                    cancelAnimationFrame(pointerFrame);
+                    pointerFrame = requestAnimationFrame(() => {
+                        cursorGlow.style.left = `${event.clientX}px`;
+                        cursorGlow.style.top = `${event.clientY}px`;
+                    });
+                }, { passive: true });
+            }
 
             window.openModal = (id) => {
                 const modal = document.getElementById(id);
@@ -1174,7 +1465,8 @@ const menuButton = document.getElementById("mobile-menu-button");
             const revealSelector = [
                 "#about .glass-card", "#experience .glass-card",
                 "#projects .grid > .glass-card", "#certifications h2",
-                "#certifications .grid > .glass-card", "#skills h2",
+                "#certifications .certificate-card", "#courses h2",
+                "#courses .certificate-card", "#skills h2",
                 "#skills .grid > .glass-card", "#education .glass-card",
                 "#languages .glass-card", "#contact .text-center",
                 "#contact .space-y-6 > .glass-card", "#contact form"
@@ -1257,7 +1549,8 @@ const menuButton = document.getElementById("mobile-menu-button");
 
             const cardSelector = [
                 "#about .glass-card", "#experience .glass-card",
-                "#projects .grid > .glass-card", "#certifications .grid > .glass-card",
+                "#projects .grid > .glass-card", "#certifications .certificate-card",
+                "#courses .certificate-card",
                 "#skills .grid > .glass-card", "#education .glass-card",
                 "#languages .glass-card", "#contact .space-y-6 > .glass-card"
             ].join(",");
