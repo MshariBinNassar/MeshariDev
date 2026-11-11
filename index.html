@@ -407,11 +407,12 @@
         .skill-group:hover { background: #0e1729; }
         .skill-group:hover::before { width: 88px; }
         .skill-group:hover::after { opacity: 1; transform: translate(-14px,-12px); }
-        .skill-group--ai { grid-column: span 7; }
-        .skill-group--cloud { grid-column: span 5; }
+        .skill-group--agentic { grid-column: span 7; }
+        .skill-group--ai { grid-column: span 5; }
+        .skill-group--cloud { grid-column: span 7; }
         .skill-group--apps { grid-column: span 5; }
-        .skill-group--programming { grid-column: span 3; }
-        .skill-group--data { grid-column: span 4; }
+        .skill-group--programming { grid-column: span 5; }
+        .skill-group--data { grid-column: span 7; }
         .skill-group-head { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 20px; }
         .skill-group-title { display: flex; align-items: center; gap: 12px; color: #eff4ff; font: 700 16px/1.35 Sora,sans-serif; }
         .skill-group-icon {
@@ -434,6 +435,7 @@
             #certifications .credential-link { display: none; }
             .skills-showcase { grid-template-columns: 1fr; }
             .skill-group,
+            .skill-group--agentic,
             .skill-group--ai,
             .skill-group--cloud,
             .skill-group--apps,
@@ -450,7 +452,9 @@
 .js-enabled .reveal-item { opacity: 1; transform: none; filter: none; }
         }
 
-    </style>
+    
+        @media (hover: none) { .interactive-card { transform: none !important; } }
+</style>
 <script id="tailwind-config">
         tailwind.config = {
             darkMode: "class",
@@ -538,7 +542,7 @@
             }
         }
     </script>
-</head>
+<meta content="Meshari Naif Bin Nassar — AI Engineer in Riyadh. Agentic AI, NVIDIA NIM, RAG, production-oriented AI applications, cloud infrastructure and Kubernetes. Explore six projects and seven professional certifications." name="description"/><meta content="#020617" name="theme-color"/></head>
 <body class="bg-background selection:bg-primary/30 scroll-smooth">
 <!-- TopNavBar (Interactive Component) -->
 <div aria-hidden="true" id="scroll-progress"></div>
@@ -586,25 +590,19 @@
 <div class="space-y-8">
 <div class="hero-enter flex items-center gap-3">
 <span class="w-3 h-3 rounded-full bg-secondary ai-pulse"></span>
-<span class="font-label-caps text-label-caps text-secondary uppercase tracking-widest">
-                        AI Model Deployment · Full-Stack Development · Cloud Infrastructure
-                    </span>
+<span class="font-label-caps text-label-caps text-secondary uppercase tracking-widest">Agentic AI · Secure LLM Deployment · Cloud Infrastructure</span>
 </div>
 <h1 class="hero-enter font-display-lg text-display-lg-mobile md:text-display-lg text-on-surface leading-tight">
-                    AI Engineer Building <span aria-live="polite" class="text-gradient" id="rotating-phrase">Reliable AI-Powered</span><span aria-hidden="true" class="typing-caret"></span> Systems
+                    AI Engineer Building <span aria-live="polite" class="text-gradient" id="rotating-phrase">Intelligent Agentic AI</span><span aria-hidden="true" class="typing-caret"></span> Systems
                 </h1>
-<p class="hero-enter font-body-lg text-body-lg text-on-surface-variant max-w-xl">
-                    AI Engineer with hands-on experience in AI model deployment, full-stack development, and enterprise
-                    environments, supported by a strong foundation in cloud computing. Experienced in building
-                    AI-powered applications using Next.js, Docker, and PostgreSQL, and deploying NVIDIA NIM models in
-                    secure air-gapped environments.
-                </p>
+<p class="hero-enter font-body-lg text-body-lg text-on-surface-variant max-w-xl">AI Engineer experienced in agentic AI applications, RAG systems, secure NVIDIA NIM inference, and cloud infrastructure. I build production-oriented AI products with FastAPI, Next.js, PostgreSQL, and human-in-the-loop workflows, alongside self-managed Kubernetes infrastructure on AWS.</p>
 <div class="hero-enter flex flex-wrap gap-3">
-<span class="px-4 py-1 glass-card rounded-full font-label-caps text-label-caps text-secondary">NVIDIA NIM</span>
+<span class="px-4 py-1 glass-card rounded-full font-label-caps text-label-caps text-secondary">HUMAN-IN-THE-LOOP</span><span class="px-4 py-1 glass-card rounded-full font-label-caps text-label-caps text-secondary">MCP</span><span class="px-4 py-1 glass-card rounded-full font-label-caps text-label-caps text-secondary">LANGGRAPH</span><span class="px-4 py-1 glass-card rounded-full font-label-caps text-label-caps text-secondary">AGENTIC AI</span><span class="px-4 py-1 glass-card rounded-full font-label-caps text-label-caps text-secondary">NVIDIA NIM</span>
 <span class="px-4 py-1 glass-card rounded-full font-label-caps text-label-caps text-secondary">LLM INFERENCE</span>
 <span class="px-4 py-1 glass-card rounded-full font-label-caps text-label-caps text-secondary">RAG</span>
-<span class="px-4 py-1 glass-card rounded-full font-label-caps text-label-caps text-secondary">AIR-GAPPED DEPLOYMENT</span>
+<span class="px-4 py-1 glass-card rounded-full font-label-caps text-label-caps text-secondary">SECURE AI DEPLOYMENT</span>
 <span class="px-4 py-1 glass-card rounded-full font-label-caps text-label-caps text-secondary">DOCKER</span>
+<span class="px-4 py-1 glass-card rounded-full font-label-caps text-label-caps text-secondary">KUBERNETES</span>
 <span class="px-4 py-1 glass-card rounded-full font-label-caps text-label-caps text-secondary">NEXT.JS</span>
 <span class="px-4 py-1 glass-card rounded-full font-label-caps text-label-caps text-secondary">FASTAPI</span>
 <span class="px-4 py-1 glass-card rounded-full font-label-caps text-label-caps text-secondary">POSTGRESQL</span>
@@ -632,27 +630,21 @@
 <div class="grid md:grid-cols-3 gap-8">
 <div class="md:col-span-2 glass-card p-10 rounded-3xl">
 <h2 class="font-headline-md text-headline-md text-primary mb-6">About Me</h2>
-<p class="font-body-lg text-body-lg text-on-surface-variant leading-relaxed mb-6">
-                            I am an AI Engineer with practical experience across AI model deployment, full-stack
-                            application development, and enterprise environments. My work includes deploying NVIDIA NIM
-                            models for offline inference, validating LLM and embedding endpoints, building RAG
-                            solutions, and developing AI-powered applications using modern web and backend technologies.
-                            I am certified across AWS, Oracle Cloud Infrastructure, and Microsoft Azure.
-                        </p>
+<p class="font-body-lg text-body-lg text-on-surface-variant leading-relaxed mb-6">I am an AI Engineer focused on building production-oriented AI applications and reliable infrastructure. My experience spans agentic AI assistants, tool calling, human-in-the-loop approvals, persistent memory, RAG, and secure deployment of NVIDIA NIM language and embedding models in air-gapped enterprise environments. I also build full-stack products and self-managed Kubernetes clusters on AWS. I hold seven certifications across AWS, Oracle Cloud Infrastructure, and Microsoft Azure.</p>
 <div class="grid grid-cols-2 md:grid-cols-4 gap-6 pt-8 border-t border-outline-variant/30">
 <div>
 <div class="text-primary font-display-lg text-headline-md"><span class="counter" data-count="7">0</span></div>
 <div class="font-label-caps text-label-caps text-on-surface-variant">Certifications</div>
 </div>
 <div>
-<div class="text-primary font-display-lg text-headline-md"><span class="counter" data-count="3">0</span></div>
+<div class="text-primary font-display-lg text-headline-md"><span class="counter" data-count="6">0</span></div>
 <div class="font-label-caps text-label-caps text-on-surface-variant">Featured Projects</div>
 </div>
 <div>
 <div class="text-primary font-display-lg text-2xl font-bold leading-tight">
                                     Solutions<br/><span class="text-xl">by STC</span>
 </div>
-<div class="font-label-caps text-label-caps text-on-surface-variant mt-1">Current Company</div>
+<div class="font-label-caps text-label-caps text-on-surface-variant mt-1">Professional Experience</div>
 </div>
 <div>
 <div class="text-primary font-display-lg text-headline-md">Riyadh</div>
@@ -664,29 +656,29 @@
 <div class="glass-card p-6 rounded-2xl flex items-start gap-4">
 <span class="material-symbols-outlined text-secondary text-3xl">psychology</span>
 <div>
-<h4 class="font-bold text-on-surface">AI &amp; Model Deployment</h4>
-<p class="text-sm text-on-surface-variant">NVIDIA NIM, LLM inference, embeddings, RAG, and secure offline deployments.</p>
+<h4 class="font-bold text-on-surface">Agentic AI &amp; Workflows</h4>
+<p class="text-sm text-on-surface-variant">AI Agents, tool calling, LangGraph, LangChain, MCP, approvals, and persistent memory.</p>
+</div>
+</div>
+<div class="glass-card p-6 rounded-2xl flex items-start gap-4">
+<span class="material-symbols-outlined text-secondary text-3xl">memory</span>
+<div>
+<h4 class="font-bold text-on-surface">AI Infrastructure &amp; Inference</h4>
+<p class="text-sm text-on-surface-variant">NVIDIA NIM, vLLM, embeddings, RAG, Ollama, and secure air-gapped deployment.</p>
 </div>
 </div>
 <div class="glass-card p-6 rounded-2xl flex items-start gap-4">
 <span class="material-symbols-outlined text-secondary text-3xl">cloud</span>
 <div>
-<h4 class="font-bold text-on-surface">Cloud &amp; Infrastructure</h4>
-<p class="text-sm text-on-surface-variant">AWS, Oracle Cloud Infrastructure, Azure, Docker, and Linux.</p>
+<h4 class="font-bold text-on-surface">Cloud &amp; Kubernetes</h4>
+<p class="text-sm text-on-surface-variant">AWS, OCI, Azure, Kubernetes, Docker, Linux, kubeadm, containerd, and HAProxy.</p>
 </div>
 </div>
 <div class="glass-card p-6 rounded-2xl flex items-start gap-4">
 <span class="material-symbols-outlined text-secondary text-3xl">layers</span>
 <div>
-<h4 class="font-bold text-on-surface">Application Development</h4>
-<p class="text-sm text-on-surface-variant">Next.js, FastAPI, REST APIs, OAuth, and PostgreSQL.</p>
-</div>
-</div>
-<div class="glass-card p-6 rounded-2xl flex items-start gap-4">
-<span class="material-symbols-outlined text-secondary text-3xl">analytics</span>
-<div>
-<h4 class="font-bold text-on-surface">Data &amp; Analytics</h4>
-<p class="text-sm text-on-surface-variant">Python, SQL, Oracle, MySQL, Excel, Power BI, and reporting.</p>
+<h4 class="font-bold text-on-surface">Full-Stack AI Applications</h4>
+<p class="text-sm text-on-surface-variant">Next.js, FastAPI, REST APIs, OAuth, SQLAlchemy, and PostgreSQL.</p>
 </div>
 </div>
 </div>
@@ -703,9 +695,7 @@
 <div class="relative flex items-center gap-3">
 <div class="absolute left-2 right-0 top-1/2 h-px bg-outline-variant/40"></div>
 <div class="relative z-10 w-5 h-5 rounded-full bg-primary ring-4 ring-primary/20"></div>
-<span class="relative z-10 bg-[#0b1020] px-3 text-secondary font-label-caps text-label-caps">
-                        01 · Current Role
-                    </span>
+<span class="relative z-10 bg-[#0b1020] px-3 text-secondary font-label-caps text-label-caps">01 · Professional Role</span>
 </div>
 <div class="relative flex items-center gap-3">
 <div class="absolute left-2 right-0 top-1/2 h-px bg-outline-variant/40"></div>
@@ -718,15 +708,16 @@
 <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
 <div class="glass-card p-8 rounded-2xl glow-blue">
 <span class="text-secondary font-label-caps text-label-caps mb-2 block">
-                        Sep 2025 – Present
+                        Sep 2025 – Sep 2026
                     </span>
 <h3 class="text-xl font-bold text-on-surface">AI Engineer</h3>
-<p class="text-primary font-semibold mb-4">Solutions by STC</p>
+<p class="text-primary font-semibold mb-4">Solutions by STC (Via VAS)</p>
 <ul class="space-y-2 text-on-surface-variant text-sm list-disc pl-4">
-<li>Deployed NVIDIA NIM (NVIDIA Inference Microservices) for AI inference in an air-gapped environment.</li>
-<li>Transferred, packaged, and validated LLM and embedding models for offline deployment.</li>
-<li>Tested inference endpoints and ensured deployment readiness and reliability.</li>
-<li>Built a RAG proof of concept and documented model deployment and validation procedures.</li>
+<li>Deployed NVIDIA NIM for LLM and embedding inference in a secure air-gapped enterprise environment.</li>
+<li>Packaged, transferred, and validated language and embedding models across NVIDIA GPU infrastructure for offline deployment.</li>
+<li>Validated inference endpoints and deployment readiness for reliable offline model serving.</li>
+<li>Built a RAG proof of concept and documented deployment, validation, and operational procedures.</li>
+<li>Presented GPUaaS at LEAP 2026, showcased NVIDIA H200 and B300 GPU capabilities, and captured 27 qualified leads.</li>
 </ul>
 </div>
 <div class="glass-card p-8 rounded-2xl glow-blue">
@@ -748,25 +739,59 @@
 <div class="flex justify-between items-end mb-12">
 <div>
 <h2 class="font-headline-md text-headline-md text-on-surface">Featured Projects</h2>
-<p class="text-on-surface-variant">AI-powered platforms built across career technology, document intelligence, and financial technology.</p>
+<p class="text-on-surface-variant">Six projects spanning agentic AI assistants, production-oriented applications, cloud infrastructure, RAG, Kubernetes, and fintech.</p>
 </div>
 <a class="text-secondary hover:underline flex items-center gap-2" href="https://github.com/MshariBinNassar" rel="noopener noreferrer" target="_blank">
                         View GitHub <span class="material-symbols-outlined">open_in_new</span>
 </a>
 </div>
-<div class="grid md:grid-cols-3 gap-8">
-<!-- Project 1 -->
-<div class="glass-card rounded-3xl overflow-hidden group">
-<div class="h-48 bg-surface-container-high relative overflow-hidden">
+<div class="grid md:grid-cols-3 gap-8"><div class="glass-card rounded-3xl overflow-hidden group">
+<div class="h-48 bg-surface-container-high relative overflow-hidden flex items-center justify-center">
 <div class="absolute inset-0 bg-gradient-to-t from-background to-transparent z-10"></div>
-<img alt="Masari.AI career and job search platform dashboard" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCWjOyoEMXVHsERmnQfCgGxhZ-nMkMoUHsoxjmzA3f0JoFDUvcxKOV1HXPtshX_sZqa9fIxb7SLK9KvutUCwCC8sroDZhnaFFD3RUs83FZIvYzSM5dvzlHN47JylHjcY_ooEos-NeoSndL8YoapbXtmr4WGWkDZ1ekR-ISWdSQF64koh-PD5LyZ8XRPEXR6Hz_VDg3hTADHBVZRM6CRDaMtSwH7SoWR6ln3hbUJUWi56rsobNH3NnxHLge7E_fg7nv0HsMxuVs7IhHp"/>
+<div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(76,215,246,0.22),transparent_65%)]"></div>
+<img alt="Munjzk AI secretary assistant workflow interface" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" src="images/Neon Munjzk AI Assistant Workflow Interface.png" loading="lazy" decoding="async"/>
 </div>
 <div class="p-8">
-<h3 class="text-xl font-bold mb-3">Masari.AI</h3>
-<p class="text-on-surface-variant text-sm mb-6">
-                                AI-powered career and job search platform featuring CV-based job matching, job analysis,
-                                career path discovery, skill gap detection, and progress tracking.
-                            </p>
+<h3 class="text-xl font-bold mb-3">Munjzk — AI Secretary Assistant</h3>
+<p class="text-on-surface-variant text-sm mb-6">Production-oriented AI secretary for professionals with connected Gmail, Google Calendar, Drive, and web research, approval-based actions, persistent memory, and document generation.</p>
+<div class="flex flex-wrap gap-2 mb-8">
+<span class="px-2 py-1 bg-secondary/10 text-secondary text-[10px] font-label-caps rounded">AI AGENTS</span>
+<span class="px-2 py-1 bg-secondary/10 text-secondary text-[10px] font-label-caps rounded">NEXT.JS</span>
+<span class="px-2 py-1 bg-secondary/10 text-secondary text-[10px] font-label-caps rounded">FASTAPI</span>
+<span class="px-2 py-1 bg-secondary/10 text-secondary text-[10px] font-label-caps rounded">POSTGRESQL</span>
+<span class="px-2 py-1 bg-secondary/10 text-secondary text-[10px] font-label-caps rounded">HITL APPROVALS</span>
+</div>
+<button class="text-sm font-bold text-primary flex items-center gap-1 group/btn" onclick="openModal('modal-munjzk')" type="button">Details <span class="material-symbols-outlined text-sm group-hover/btn:translate-x-1 transition-transform">chevron_right</span></button>
+</div>
+</div><div class="glass-card rounded-3xl overflow-hidden group">
+<div class="h-48 bg-surface-container-high relative overflow-hidden flex items-center justify-center">
+<div class="absolute inset-0 bg-gradient-to-t from-background to-transparent z-10"></div>
+<div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(173,198,255,0.18),transparent_60%)]"></div>
+<img alt="Self-managed AWS Kubernetes cluster dashboard" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" src="images/Neon Kubernetes Cluster Dashboard.png" loading="lazy" decoding="async"/>
+</div>
+<div class="p-8">
+<h3 class="text-xl font-bold mb-3">AWS Kubernetes Cluster</h3>
+<p class="text-on-surface-variant text-sm mb-6">Self-managed Kubernetes cluster on AWS EC2 and VPC with two control-plane nodes, two workers, HAProxy load balancing, containerd, Calico, and a validated NGINX workload.</p>
+<div class="flex flex-wrap gap-2 mb-8">
+<span class="px-2 py-1 bg-secondary/10 text-secondary text-[10px] font-label-caps rounded">AWS EC2</span>
+<span class="px-2 py-1 bg-secondary/10 text-secondary text-[10px] font-label-caps rounded">KUBERNETES</span>
+<span class="px-2 py-1 bg-secondary/10 text-secondary text-[10px] font-label-caps rounded">KUBEADM</span>
+<span class="px-2 py-1 bg-secondary/10 text-secondary text-[10px] font-label-caps rounded">HAPROXY</span>
+<span class="px-2 py-1 bg-secondary/10 text-secondary text-[10px] font-label-caps rounded">CALICO</span>
+</div>
+<button class="text-sm font-bold text-primary flex items-center gap-1 group/btn" onclick="openModal('modal-kubernetes')">
+                                Details
+                                <span class="material-symbols-outlined text-sm group-hover/btn:translate-x-1 transition-transform">chevron_right</span>
+</button>
+</div>
+</div><div class="glass-card rounded-3xl overflow-hidden group">
+<div class="h-48 bg-surface-container-high relative overflow-hidden">
+<div class="absolute inset-0 bg-gradient-to-t from-background to-transparent z-10"></div>
+<img alt="Masark.AI career and job search platform dashboard" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" src="images/Futuristic Career Platform Interface.png" loading="lazy" decoding="async"/>
+</div>
+<div class="p-8">
+<h3 class="text-xl font-bold mb-3">Masark.AI</h3>
+<p class="text-on-surface-variant text-sm mb-6">AI-powered career and job search platform with CV-based job matching, job analysis, career discovery, skill-gap detection, and progress tracking.</p>
 <div class="flex flex-wrap gap-2 mb-8">
 <span class="px-2 py-1 bg-secondary/10 text-secondary text-[10px] font-label-caps rounded">NEXT.JS</span>
 <span class="px-2 py-1 bg-secondary/10 text-secondary text-[10px] font-label-caps rounded">TYPESCRIPT</span>
@@ -774,17 +799,15 @@
 <span class="px-2 py-1 bg-secondary/10 text-secondary text-[10px] font-label-caps rounded">OAUTH</span>
 <span class="px-2 py-1 bg-secondary/10 text-secondary text-[10px] font-label-caps rounded">AI APIs</span>
 </div>
-<button class="text-sm font-bold text-primary flex items-center gap-1 group/btn" onclick="openModal('modal-masari')">
+<button class="text-sm font-bold text-primary flex items-center gap-1 group/btn" onclick="openModal('modal-masark')">
                                 Details
                                 <span class="material-symbols-outlined text-sm group-hover/btn:translate-x-1 transition-transform">chevron_right</span>
 </button>
 </div>
-</div>
-<!-- Project 2 -->
-<div class="glass-card rounded-3xl overflow-hidden group">
+</div><div class="glass-card rounded-3xl overflow-hidden group">
 <div class="h-48 bg-surface-container-high relative overflow-hidden">
 <div class="absolute inset-0 bg-gradient-to-t from-background to-transparent z-10"></div>
-<img alt="AskMyDocs.AI local document intelligence platform" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" src="images/LocalAssistant.png"/>
+<img alt="AskMyDocs.AI local document intelligence platform" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" src="images/AskMyDocs.png" loading="lazy" decoding="async"/>
 </div>
 <div class="p-8">
 <h3 class="text-xl font-bold mb-3">AskMyDocs.AI</h3>
@@ -804,12 +827,31 @@
                                 <span class="material-symbols-outlined text-sm group-hover/btn:translate-x-1 transition-transform">chevron_right</span>
 </button>
 </div>
+</div><div class="glass-card rounded-3xl overflow-hidden group">
+<div class="h-48 bg-surface-container-high relative overflow-hidden flex items-center justify-center">
+<div class="absolute inset-0 bg-gradient-to-t from-background to-transparent z-10"></div>
+<div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(76,215,246,0.18),transparent_60%)]"></div>
+<img alt="InvoiceAssist AI invoice diagnostics dashboard" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" src="images/Neon Invoice Diagnostics Dashboard.png" loading="lazy" decoding="async"/>
 </div>
-<!-- Project 3 -->
-<div class="glass-card rounded-3xl overflow-hidden group">
+<div class="p-8">
+<h3 class="text-xl font-bold mb-3">InvoiceAssist.AI</h3>
+<p class="text-on-surface-variant text-sm mb-6">Local AI assistant for diagnosing Oracle EBS AP invoice errors using RAG-based root-cause analysis, evidence, and recommended actions.</p>
+<div class="flex flex-wrap gap-2 mb-8">
+<span class="px-2 py-1 bg-secondary/10 text-secondary text-[10px] font-label-caps rounded">PYTHON</span>
+<span class="px-2 py-1 bg-secondary/10 text-secondary text-[10px] font-label-caps rounded">FASTAPI</span>
+<span class="px-2 py-1 bg-secondary/10 text-secondary text-[10px] font-label-caps rounded">ORACLE</span>
+<span class="px-2 py-1 bg-secondary/10 text-secondary text-[10px] font-label-caps rounded">RAG</span>
+<span class="px-2 py-1 bg-secondary/10 text-secondary text-[10px] font-label-caps rounded">OLLAMA</span>
+</div>
+<button class="text-sm font-bold text-primary flex items-center gap-1 group/btn" onclick="openModal('modal-invoiceassist')">
+                                Details
+                                <span class="material-symbols-outlined text-sm group-hover/btn:translate-x-1 transition-transform">chevron_right</span>
+</button>
+</div>
+</div><div class="glass-card rounded-3xl overflow-hidden group">
 <div class="h-48 bg-surface-container-high relative overflow-hidden">
 <div class="absolute inset-0 bg-gradient-to-t from-background to-transparent z-10"></div>
-<img alt="AI-powered investment management platform" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" src="images/comingsoon.png"/>
+<img alt="AI-powered investment management platform" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" src="images/Neon AI Investment Dashboard.png" loading="lazy" decoding="async"/>
 </div>
 <div class="p-8">
 <h3 class="text-xl font-bold mb-3">AI-Powered Investment Management Platform</h3>
@@ -827,8 +869,7 @@
                                 <span class="material-symbols-outlined text-sm group-hover/btn:translate-x-1 transition-transform">chevron_right</span>
 </button>
 </div>
-</div>
-</div>
+</div></div>
 </div>
 </section>
 <!-- Project Details Modal -->
@@ -836,13 +877,62 @@
 <button aria-label="Close project details" class="absolute top-6 right-6 md:top-12 md:right-12 text-on-surface-variant hover:text-primary transition-colors z-[110]" onclick="closeModal()">
 <span class="material-symbols-outlined text-4xl">close</span>
 </button>
-<!-- Masari.AI Modal -->
-<div class="modal-container-anim hidden w-full max-w-5xl max-h-[90vh] rounded-[2rem] overflow-y-auto no-scrollbar shadow-[0_0_80px_rgba(77,142,255,0.3)] bg-surface-container-high/70 backdrop-blur-2xl border-2 border-primary/30 relative" id="modal-masari">
+<!-- Masark.AI Modal -->
+<div class="modal-container-anim hidden w-full max-w-5xl max-h-[90vh] rounded-[2rem] overflow-y-auto no-scrollbar shadow-[0_0_80px_rgba(76,215,246,0.25)] bg-surface-container-high/70 backdrop-blur-2xl border-2 border-secondary/30 relative" id="modal-munjzk">
 <div class="p-8 md:p-14">
 <div class="flex flex-col md:flex-row justify-between items-start gap-8 mb-12">
 <div class="space-y-4">
 <div class="flex items-center flex-wrap gap-4">
-<h2 class="font-display-lg text-4xl md:text-5xl text-on-surface">Masari.AI</h2>
+<h2 class="font-display-lg text-4xl md:text-5xl text-on-surface">Munjzk — AI Secretary Assistant</h2>
+</div>
+<p class="text-secondary font-body-lg text-xl md:text-2xl font-medium">A production-oriented AI secretary for professionals</p>
+</div>
+<a class="px-7 py-3 bg-primary text-on-primary rounded-2xl font-bold transition-all flex items-center justify-center gap-2" href="https://github.com/MshariBinNassar/Munjzk" rel="noopener noreferrer" target="_blank">
+<span class="material-symbols-outlined">code</span> GitHub Repository
+   </a>
+</div>
+<div class="space-y-10">
+<div class="glass-card p-8 rounded-3xl border-secondary/20">
+<h4 class="font-label-caps text-secondary mb-6 flex items-center gap-3"><span class="material-symbols-outlined text-xl">info</span> OVERVIEW</h4>
+<p class="text-on-surface-variant text-lg leading-relaxed">Munjzk is an AI secretary assistant that brings communication, scheduling, research, and document workflows into one conversational interface. It integrates Gmail, Google Calendar, Google Drive, and web search, with persistent context and explicit human approvals for external actions.</p>
+</div>
+<div class="grid md:grid-cols-2 gap-8">
+<div class="glass-card p-8 rounded-3xl border-secondary/20">
+<h4 class="font-label-caps text-secondary mb-4 flex items-center gap-3"><span class="material-symbols-outlined text-xl">auto_awesome</span> CORE CAPABILITIES</h4>
+<ul class="space-y-3 text-on-surface-variant leading-relaxed">
+<li>• Multi-service tool calling: Gmail, Calendar, Drive, and web</li>
+<li>• Approval-based actions and human-in-the-loop controls</li>
+<li>• Persistent memory and conversational context</li>
+<li>• Document generation and professional workflows</li>
+<li>• Agent-oriented interaction for multi-step requests</li>
+</ul>
+</div>
+<div class="glass-card p-8 rounded-3xl border-primary/20">
+<h4 class="font-label-caps text-primary mb-4 flex items-center gap-3"><span class="material-symbols-outlined text-xl">code</span> TECH STACK</h4>
+<div class="flex flex-wrap gap-3">
+<span class="px-4 py-2 glass-card rounded-full text-sm font-bold">Next.js</span>
+<span class="px-4 py-2 glass-card rounded-full text-sm font-bold">TypeScript</span>
+<span class="px-4 py-2 glass-card rounded-full text-sm font-bold">FastAPI</span>
+<span class="px-4 py-2 glass-card rounded-full text-sm font-bold">PostgreSQL</span>
+<span class="px-4 py-2 glass-card rounded-full text-sm font-bold">OAuth</span>
+<span class="px-4 py-2 glass-card rounded-full text-sm font-bold">Tool Calling</span>
+<span class="px-4 py-2 glass-card rounded-full text-sm font-bold">REST APIs</span>
+</div>
+</div>
+</div>
+<div class="glass-card p-7 rounded-3xl border-primary/15">
+<h4 class="font-label-caps text-secondary mb-3">PROJECT STATUS</h4>
+<p class="text-on-surface-variant leading-relaxed">An actively developed personal project. The portfolio describes its implemented and in-progress capabilities; it is not presented as a commercially launched product.</p>
+</div>
+<div class="flex justify-end pt-4"><button class="px-6 py-3 rounded-xl glass-card font-bold text-on-surface hover:text-primary transition-colors" onclick="closeModal()" type="button">Close</button></div>
+</div>
+</div>
+</div><div class="modal-container-anim hidden w-full max-w-5xl max-h-[90vh] rounded-[2rem] overflow-y-auto no-scrollbar shadow-[0_0_80px_rgba(77,142,255,0.3)] bg-surface-container-high/70 backdrop-blur-2xl border-2 border-primary/30 relative" id="modal-masark">
+<div class="p-8 md:p-14">
+<div class="flex flex-col md:flex-row justify-between items-start gap-8 mb-12">
+<div class="space-y-4">
+<div class="flex items-center flex-wrap gap-4">
+<h2 class="font-display-lg text-4xl md:text-5xl text-on-surface">Masark.AI</h2>
 <span class="px-4 py-1.5 bg-green-500/15 text-green-300 font-label-caps text-[10px] rounded-full border border-green-400/30 flex items-center gap-2">
 <span class="w-2 h-2 rounded-full bg-green-400 ai-pulse"></span>
                                     ACTIVE PROJECT
@@ -859,12 +949,7 @@
 <span class="material-symbols-outlined text-xl">info</span>
                                 OVERVIEW
                             </h4>
-<p class="text-on-surface-variant text-lg leading-relaxed">
-                                Masari.AI helps users understand their career readiness and discover relevant
-                                opportunities. The platform combines CV-based job matching, job-description analysis,
-                                career path discovery, technical skill-gap detection, and progress tracking in one
-                                guided experience.
-                            </p>
+<p class="text-on-surface-variant text-lg leading-relaxed">Masark.AI helps job seekers discover relevant roles and assess career readiness. It combines CV-based job matching, job-description analysis, career path discovery, skill-gap detection, and progress tracking in a guided experience.</p>
 </div>
 <div class="grid md:grid-cols-2 gap-8">
 <div class="glass-card p-8 rounded-3xl border-secondary/20">
@@ -1015,6 +1100,109 @@
 </div>
 </div>
 </div>
+<!-- InvoiceAssist.AI Modal -->
+<div class="modal-container-anim hidden w-full max-w-5xl max-h-[90vh] rounded-[2rem] overflow-y-auto no-scrollbar shadow-[0_0_80px_rgba(76,215,246,0.24)] bg-surface-container-high/70 backdrop-blur-2xl border-2 border-secondary/30 relative" id="modal-invoiceassist">
+<div class="p-8 md:p-14">
+<div class="space-y-4 mb-12">
+<div class="flex items-center flex-wrap gap-4">
+<h2 class="font-display-lg text-4xl md:text-5xl text-on-surface">InvoiceAssist.AI</h2>
+<span class="px-4 py-1.5 bg-green-500/15 text-green-300 font-label-caps text-[10px] rounded-full border border-green-400/30">COMPLETED</span>
+</div>
+<p class="text-secondary font-body-lg text-xl md:text-2xl font-medium">AI-powered invoice diagnostics and explanation platform</p>
+</div>
+<div class="space-y-10">
+<div class="glass-card p-8 rounded-3xl border-secondary/20">
+<h4 class="font-label-caps text-secondary mb-6 flex items-center gap-3"><span class="material-symbols-outlined text-xl">info</span>OVERVIEW</h4>
+<p class="text-on-surface-variant text-lg leading-relaxed">
+                                InvoiceAssist.AI reads invoice data, determines whether an invoice is valid or rejected,
+                                identifies the root cause of rejected invoices, recommends the next action, and generates
+                                a clear explanation grounded in a local knowledge base using RAG.
+                            </p>
+</div>
+<div class="grid md:grid-cols-2 gap-8">
+<div class="glass-card p-8 rounded-3xl border-secondary/20">
+<h4 class="font-label-caps text-secondary mb-4 flex items-center gap-3"><span class="material-symbols-outlined text-xl">checklist</span>KEY CAPABILITIES</h4>
+<ul class="space-y-3 text-on-surface-variant leading-relaxed">
+<li>• Invoice validation and rejection diagnostics</li>
+<li>• Root-cause identification</li>
+<li>• Recommended next actions</li>
+<li>• RAG-based explanations from a knowledge base</li>
+<li>• Fully local AI inference workflow</li>
+</ul>
+</div>
+<div class="glass-card p-8 rounded-3xl border-primary/20">
+<h4 class="font-label-caps text-primary mb-4 flex items-center gap-3"><span class="material-symbols-outlined text-xl">code</span>TECH STACK</h4>
+<div class="flex flex-wrap gap-3">
+<span class="px-4 py-2 glass-card rounded-full text-sm font-bold">Next.js</span>
+<span class="px-4 py-2 glass-card rounded-full text-sm font-bold">FastAPI</span>
+<span class="px-4 py-2 glass-card rounded-full text-sm font-bold">Oracle Database</span>
+<span class="px-4 py-2 glass-card rounded-full text-sm font-bold">ChromaDB</span>
+<span class="px-4 py-2 glass-card rounded-full text-sm font-bold">Qwen 2.5</span>
+<span class="px-4 py-2 glass-card rounded-full text-sm font-bold">Ollama</span>
+<span class="px-4 py-2 glass-card rounded-full text-sm font-bold">Docker</span>
+</div>
+</div>
+</div>
+<div class="flex justify-end pt-4"><button class="px-6 py-3 rounded-xl glass-card font-bold text-on-surface hover:text-primary transition-colors" onclick="closeModal()">Close</button></div>
+</div>
+</div>
+</div>
+<!-- AWS Kubernetes Cluster Modal -->
+<div class="modal-container-anim hidden w-full max-w-5xl max-h-[90vh] rounded-[2rem] overflow-y-auto no-scrollbar shadow-[0_0_80px_rgba(173,198,255,0.25)] bg-surface-container-high/70 backdrop-blur-2xl border-2 border-primary/30 relative" id="modal-kubernetes">
+<div class="p-8 md:p-14">
+<div class="space-y-4 mb-12">
+<div class="flex items-center flex-wrap gap-4">
+<h2 class="font-display-lg text-4xl md:text-5xl text-on-surface">AWS Kubernetes Cluster</h2>
+<span class="px-4 py-1.5 bg-green-500/15 text-green-300 font-label-caps text-[10px] rounded-full border border-green-400/30">COMPLETED</span>
+</div>
+<p class="text-secondary font-body-lg text-xl md:text-2xl font-medium">Production-style self-managed Kubernetes infrastructure on AWS EC2</p>
+</div>
+<div class="space-y-10">
+<div class="glass-card p-8 rounded-3xl border-primary/10">
+<h4 class="font-label-caps text-secondary mb-6 flex items-center gap-3"><span class="material-symbols-outlined text-xl">info</span>OVERVIEW</h4>
+<p class="text-on-surface-variant text-lg leading-relaxed">
+                                Built a five-node Kubernetes environment on AWS EC2 using Ubuntu 24.04, kubeadm,
+                                containerd, HAProxy, and Calico. The architecture uses one dedicated load balancer,
+                                two control-plane nodes, and two worker nodes with private VPC communication and
+                                controlled security-group access.
+                            </p>
+</div>
+<div class="grid md:grid-cols-2 gap-8">
+<div class="glass-card p-8 rounded-3xl border-secondary/20">
+<h4 class="font-label-caps text-secondary mb-4 flex items-center gap-3"><span class="material-symbols-outlined text-xl">account_tree</span>ARCHITECTURE</h4>
+<ul class="space-y-3 text-on-surface-variant leading-relaxed">
+<li>• 1 HAProxy load balancer</li>
+<li>• 2 Kubernetes control planes</li>
+<li>• 2 worker nodes</li>
+<li>• Kubernetes API through TCP 6443</li>
+<li>• Calico networking and CoreDNS validation</li>
+</ul>
+</div>
+<div class="glass-card p-8 rounded-3xl border-primary/20">
+<h4 class="font-label-caps text-primary mb-4 flex items-center gap-3"><span class="material-symbols-outlined text-xl">code</span>TECH STACK</h4>
+<div class="flex flex-wrap gap-3">
+<span class="px-4 py-2 glass-card rounded-full text-sm font-bold">AWS EC2</span>
+<span class="px-4 py-2 glass-card rounded-full text-sm font-bold">Ubuntu 24.04</span>
+<span class="px-4 py-2 glass-card rounded-full text-sm font-bold">Kubernetes</span>
+<span class="px-4 py-2 glass-card rounded-full text-sm font-bold">kubeadm</span>
+<span class="px-4 py-2 glass-card rounded-full text-sm font-bold">containerd</span>
+<span class="px-4 py-2 glass-card rounded-full text-sm font-bold">HAProxy</span>
+<span class="px-4 py-2 glass-card rounded-full text-sm font-bold">Calico</span>
+<span class="px-4 py-2 glass-card rounded-full text-sm font-bold">VPC</span>
+</div>
+</div>
+</div>
+<div class="glass-card p-8 rounded-3xl border-secondary/20">
+<h4 class="font-label-caps text-secondary mb-4 flex items-center gap-3"><span class="material-symbols-outlined text-xl">verified</span>VALIDATION</h4>
+<p class="text-on-surface-variant leading-relaxed">
+                                Joined the additional control plane and worker nodes, verified healthy cluster networking
+                                and DNS services, and validated the environment with an exposed NGINX workload.
+                            </p>
+</div>
+<div class="flex justify-end pt-4"><button class="px-6 py-3 rounded-xl glass-card font-bold text-on-surface hover:text-primary transition-colors" onclick="closeModal()">Close</button></div>
+</div>
+</div>
+</div>
 </div>
 <!-- Skills Categories -->
 <!-- Certifications -->
@@ -1025,8 +1213,7 @@
 <h2 class="font-headline-md text-headline-md text-on-surface mt-4 mb-4">Certification Badges</h2>
 </div>
 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="certificate-grid">
-
-<article class="certificate-card" data-certificate-card data-provider="oracle" style="--badge-color:#f15a29;--badge-glow:rgba(241,90,41,.24)">
+<article class="certificate-card" data-certificate-card="" data-provider="oracle" style="--badge-color:#f15a29;--badge-glow:rgba(241,90,41,.24)">
 <div class="badge-stage">
 <img alt="Oracle Generative AI Professional certificate preview" class="certificate-document" loading="lazy" src="Certificates/previews/Oracle_Cloud_Infrastructure_2025_Certified_Generative_AI_Professional.jpg"/>
 <a aria-label="Open Oracle Generative AI Professional certificate" class="certificate-preview-link" href="Certificates/Oracle_Cloud_Infrastructure_2025_Certified_Generative_AI_Professional.pdf" target="_blank"><span class="certificate-preview-action">Open certificate <span class="material-symbols-outlined text-base">open_in_new</span></span></a>
@@ -1038,8 +1225,7 @@
 <a class="credential-link" href="https://catalog-education.oracle.com/pls/certview/sharebadge?id=BCB81ECC7A252B2607AF2FE4097F9225C8CA394EDB85DEE16D1CF3F55DBF3771"><span>Verify credential</span><span class="material-symbols-outlined text-base">open_in_new</span></a>
 </div>
 </article>
-
-<article class="certificate-card" data-certificate-card data-provider="oracle" style="--badge-color:#ef6c35;--badge-glow:rgba(239,108,53,.22)">
+<article class="certificate-card" data-certificate-card="" data-provider="oracle" style="--badge-color:#ef6c35;--badge-glow:rgba(239,108,53,.22)">
 <div class="badge-stage">
 <img alt="Oracle Architect Associate certificate preview" class="certificate-document" loading="lazy" src="Certificates/previews/Oracle_Cloud_Infrastructure_2025_Certified_Architect_Associate.jpg"/>
 <a aria-label="Open Oracle Architect Associate certificate" class="certificate-preview-link" href="Certificates/Oracle_Cloud_Infrastructure_2025_Certified_Architect_Associate.pdf" target="_blank"><span class="certificate-preview-action">Open certificate <span class="material-symbols-outlined text-base">open_in_new</span></span></a>
@@ -1051,8 +1237,7 @@
 <a class="credential-link" href="https://catalog-education.oracle.com/pls/certview/sharebadge?id=59F6C493817BF4EE9D9026F16A79E265AF0DC1D93DD843DFE13AC7E21B53DFEA"><span>Verify credential</span><span class="material-symbols-outlined text-base">open_in_new</span></a>
 </div>
 </article>
-
-<article class="certificate-card" data-certificate-card data-provider="aws" style="--badge-color:#ff9900;--badge-glow:rgba(255,153,0,.24)">
+<article class="certificate-card" data-certificate-card="" data-provider="aws" style="--badge-color:#ff9900;--badge-glow:rgba(255,153,0,.24)">
 <div class="badge-stage">
 <img alt="AWS Machine Learning Engineer Associate certificate preview" class="certificate-document" loading="lazy" src="Certificates/previews/AWS%20Certified%20Machine%20Learning%20Engineer%20-%20Associate%20certificate.jpg"/>
 <a aria-label="Open AWS Machine Learning Engineer Associate certificate" class="certificate-preview-link" href="Certificates/AWS%20Certified%20Machine%20Learning%20Engineer%20-%20Associate%20certificate.pdf" target="_blank"><span class="certificate-preview-action">Open certificate <span class="material-symbols-outlined text-base">open_in_new</span></span></a>
@@ -1063,8 +1248,7 @@
 <p class="certificate-meta">Associate · Issued Jul 2026</p>
 </div>
 </article>
-
-<article class="certificate-card" data-certificate-card data-provider="aws" style="--badge-color:#9b70ff;--badge-glow:rgba(155,112,255,.24)">
+<article class="certificate-card" data-certificate-card="" data-provider="aws" style="--badge-color:#9b70ff;--badge-glow:rgba(155,112,255,.24)">
 <div class="badge-stage">
 <img alt="AWS AI Practitioner certificate preview" class="certificate-document" loading="lazy" src="Certificates/previews/AWS%20Certified%20AI%20Practitioner%20certificate.jpg"/>
 <a aria-label="Open AWS AI Practitioner certificate" class="certificate-preview-link" href="Certificates/AWS%20Certified%20AI%20Practitioner%20certificate.pdf" target="_blank"><span class="certificate-preview-action">Open certificate <span class="material-symbols-outlined text-base">open_in_new</span></span></a>
@@ -1075,8 +1259,7 @@
 <p class="certificate-meta">Foundational · Issued Jun 2026</p>
 </div>
 </article>
-
-<article class="certificate-card" data-certificate-card data-provider="microsoft" style="--badge-color:#36a6e8;--badge-glow:rgba(54,166,232,.24)">
+<article class="certificate-card" data-certificate-card="" data-provider="microsoft" style="--badge-color:#36a6e8;--badge-glow:rgba(54,166,232,.24)">
 <div class="badge-stage">
 <img alt="Microsoft Certified Azure Fundamentals certificate" class="certificate-document" loading="lazy" src="Certificates/AZ-900.jpg"/>
 <a aria-label="Open Microsoft Azure Fundamentals certificate" class="certificate-preview-link" href="Certificates/AZ-900.jpg" target="_blank"><span class="certificate-preview-action">Open certificate <span class="material-symbols-outlined text-base">open_in_new</span></span></a>
@@ -1088,8 +1271,7 @@
 <a class="credential-link" href="https://learn.microsoft.com/api/credentials/share/en-us/MeshariNBinNassar-0858/615E7ADB1619A4D?sharingId=3BE74A778227B5BC"><span>Verify credential</span><span class="material-symbols-outlined text-base">open_in_new</span></a>
 </div>
 </article>
-
-<article class="certificate-card" data-certificate-card data-provider="oracle" style="--badge-color:#ec713e;--badge-glow:rgba(236,113,62,.22)">
+<article class="certificate-card" data-certificate-card="" data-provider="oracle" style="--badge-color:#ec713e;--badge-glow:rgba(236,113,62,.22)">
 <div class="badge-stage">
 <img alt="Oracle AI Foundations Associate certificate preview" class="certificate-document" loading="lazy" src="Certificates/previews/Oracle_Cloud_Infrastructure_2025_Certified_AI_Foundations_Associate.jpg"/>
 <a aria-label="Open Oracle AI Foundations Associate certificate" class="certificate-preview-link" href="Certificates/Oracle_Cloud_Infrastructure_2025_Certified_AI_Foundations_Associate.pdf" target="_blank"><span class="certificate-preview-action">Open certificate <span class="material-symbols-outlined text-base">open_in_new</span></span></a>
@@ -1101,8 +1283,7 @@
 <a class="credential-link" href="https://catalog-education.oracle.com/pls/certview/sharebadge?id=C31C67CC09210FB3DC6DCC68110D02E7C35A7DE4DBE1C0158778B2F3C0A11BD9"><span>Verify credential</span><span class="material-symbols-outlined text-base">open_in_new</span></a>
 </div>
 </article>
-
-<article class="certificate-card" data-certificate-card data-provider="oracle" style="--badge-color:#d85f32;--badge-glow:rgba(216,95,50,.22)">
+<article class="certificate-card" data-certificate-card="" data-provider="oracle" style="--badge-color:#d85f32;--badge-glow:rgba(216,95,50,.22)">
 <div class="badge-stage">
 <img alt="Oracle Foundations Associate certificate preview" class="certificate-document" loading="lazy" src="Certificates/previews/Oracle_Cloud_Infrastructure_2025_Certified_Foundations_Associate.jpg"/>
 <a aria-label="Open Oracle Foundations Associate certificate" class="certificate-preview-link" href="Certificates/Oracle_Cloud_Infrastructure_2025_Certified_Foundations_Associate.pdf" target="_blank"><span class="certificate-preview-action">Open certificate <span class="material-symbols-outlined text-base">open_in_new</span></span></a>
@@ -1114,7 +1295,6 @@
 <a class="credential-link" href="https://catalog-education.oracle.com/pls/certview/sharebadge?id=0BD48AD13D8833A37CFF68F850144CF07DFB96DDDDF77AD79BA89A71B663F5AE"><span>Verify credential</span><span class="material-symbols-outlined text-base">open_in_new</span></a>
 </div>
 </article>
-
 </div>
 </div>
 </section>
@@ -1125,150 +1305,136 @@
 <h2 class="font-headline-md text-headline-md text-on-surface mt-4 mb-4">Courses</h2>
 </div>
 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="courses-grid">
-
 <article class="certificate-card course-card" style="--badge-color:#ff9900;--badge-glow:rgba(255,153,0,.24)">
 <div class="badge-stage">
 <img alt="AWS Generative AI course preview" class="certificate-document" loading="lazy" src="courses/previews/aws-generative-ai.jpg"/>
-<a aria-label="Open AWS Generative AI course" class="certificate-preview-link" href="courses/AMAZON_WEB_SERVICES_DGAIA_1485302.pdf" target="_blank" rel="noopener"><span class="certificate-preview-action">Open course <span class="material-symbols-outlined text-base">open_in_new</span></span></a>
+<a aria-label="Open AWS Generative AI course" class="certificate-preview-link" href="courses/AMAZON_WEB_SERVICES_DGAIA_1485302.pdf" rel="noopener" target="_blank"><span class="certificate-preview-action">Open course <span class="material-symbols-outlined text-base">open_in_new</span></span></a>
 </div>
 <div class="certificate-content">
 <div class="certificate-provider">Amazon Web Services</div>
 <h3 class="certificate-title">AWS Generative AI Accreditation</h3>
 </div>
 </article>
-
 <article class="certificate-card course-card" style="--badge-color:#ff9900;--badge-glow:rgba(255,153,0,.24)">
 <div class="badge-stage">
 <img alt="AWS Machine Learning course preview" class="certificate-document" loading="lazy" src="courses/previews/aws-machine-learning-engineer.jpg"/>
-<a aria-label="Open AWS Machine Learning course" class="certificate-preview-link" href="courses/AMAZON_WEB_SERVICES_MLEA_1480721%20%281%29.pdf" target="_blank" rel="noopener"><span class="certificate-preview-action">Open course <span class="material-symbols-outlined text-base">open_in_new</span></span></a>
+<a aria-label="Open AWS Machine Learning course" class="certificate-preview-link" href="courses/AMAZON_WEB_SERVICES_MLEA_1480721%20%281%29.pdf" rel="noopener" target="_blank"><span class="certificate-preview-action">Open course <span class="material-symbols-outlined text-base">open_in_new</span></span></a>
 </div>
 <div class="certificate-content">
 <div class="certificate-provider">Amazon Web Services</div>
 <h3 class="certificate-title">AWS Machine Learning Engineer Associate Training</h3>
 </div>
 </article>
-
 <article class="certificate-card course-card" style="--badge-color:#76b900;--badge-glow:rgba(118,185,0,.25)">
 <div class="badge-stage">
 <img alt="NVIDIA AI Technical Curriculum preview" class="certificate-document" loading="lazy" src="courses/previews/nvidia-ai-technical-curriculum.jpg"/>
-<a aria-label="Open NVIDIA AI Technical Curriculum course" class="certificate-preview-link" href="courses/NVIDIA%20AI%20Technical%20Curriculum.pdf" target="_blank" rel="noopener"><span class="certificate-preview-action">Open course <span class="material-symbols-outlined text-base">open_in_new</span></span></a>
+<a aria-label="Open NVIDIA AI Technical Curriculum course" class="certificate-preview-link" href="courses/NVIDIA%20AI%20Technical%20Curriculum.pdf" rel="noopener" target="_blank"><span class="certificate-preview-action">Open course <span class="material-symbols-outlined text-base">open_in_new</span></span></a>
 </div>
 <div class="certificate-content">
 <div class="certificate-provider">NVIDIA</div>
 <h3 class="certificate-title">NVIDIA AI Technical Curriculum</h3>
 </div>
 </article>
-
 <article class="certificate-card course-card" style="--badge-color:#76b900;--badge-glow:rgba(118,185,0,.25)">
 <div class="badge-stage">
 <img alt="NVIDIA Cloud Technologies course preview" class="certificate-document" loading="lazy" src="courses/previews/nvidia-cloud-technologies.jpg"/>
-<a aria-label="Open NVIDIA Cloud Technologies course" class="certificate-preview-link" href="courses/Cloud%20NVIDIA%20Technologies%20Technical.pdf" target="_blank" rel="noopener"><span class="certificate-preview-action">Open course <span class="material-symbols-outlined text-base">open_in_new</span></span></a>
+<a aria-label="Open NVIDIA Cloud Technologies course" class="certificate-preview-link" href="courses/Cloud%20NVIDIA%20Technologies%20Technical.pdf" rel="noopener" target="_blank"><span class="certificate-preview-action">Open course <span class="material-symbols-outlined text-base">open_in_new</span></span></a>
 </div>
 <div class="certificate-content">
 <div class="certificate-provider">NVIDIA</div>
 <h3 class="certificate-title">Cloud NVIDIA Technologies Technical</h3>
 </div>
 </article>
-
 <article class="certificate-card course-card" style="--badge-color:#76b900;--badge-glow:rgba(118,185,0,.25)">
 <div class="badge-stage">
 <img alt="NVIDIA Compute Technical Curriculum preview" class="certificate-document" loading="lazy" src="courses/previews/nvidia-compute-technical-curriculum.jpg"/>
-<a aria-label="Open NVIDIA Compute Technical Curriculum course" class="certificate-preview-link" href="courses/Compute%20Technical%20Curriculum.pdf" target="_blank" rel="noopener"><span class="certificate-preview-action">Open course <span class="material-symbols-outlined text-base">open_in_new</span></span></a>
+<a aria-label="Open NVIDIA Compute Technical Curriculum course" class="certificate-preview-link" href="courses/Compute%20Technical%20Curriculum.pdf" rel="noopener" target="_blank"><span class="certificate-preview-action">Open course <span class="material-symbols-outlined text-base">open_in_new</span></span></a>
 </div>
 <div class="certificate-content">
 <div class="certificate-provider">NVIDIA</div>
 <h3 class="certificate-title">Compute Technical Curriculum</h3>
 </div>
 </article>
-
 <article class="certificate-card course-card" style="--badge-color:#76b900;--badge-glow:rgba(118,185,0,.25)">
 <div class="badge-stage">
 <img alt="NVIDIA DGX AI Compute Systems Installation preview" class="certificate-document" loading="lazy" src="courses/previews/nvidia-dgx-ai-compute-installation.jpg"/>
-<a aria-label="Open NVIDIA DGX AI Compute Systems Installation course" class="certificate-preview-link" href="courses/DGX%20AI%20Compute%20Systems%20Installation.pdf" target="_blank" rel="noopener"><span class="certificate-preview-action">Open course <span class="material-symbols-outlined text-base">open_in_new</span></span></a>
+<a aria-label="Open NVIDIA DGX AI Compute Systems Installation course" class="certificate-preview-link" href="courses/DGX%20AI%20Compute%20Systems%20Installation.pdf" rel="noopener" target="_blank"><span class="certificate-preview-action">Open course <span class="material-symbols-outlined text-base">open_in_new</span></span></a>
 </div>
 <div class="certificate-content">
 <div class="certificate-provider">NVIDIA</div>
 <h3 class="certificate-title">DGX AI Compute Systems Installation</h3>
 </div>
 </article>
-
 <article class="certificate-card course-card" style="--badge-color:#76b900;--badge-glow:rgba(118,185,0,.25)">
 <div class="badge-stage">
 <img alt="NVIDIA DGX Cloud Curriculum preview" class="certificate-document" loading="lazy" src="courses/previews/nvidia-dgx-cloud-curriculum.jpg"/>
-<a aria-label="Open NVIDIA DGX Cloud Curriculum course" class="certificate-preview-link" href="courses/DGX%20Cloud%20Curriculum.pdf" target="_blank" rel="noopener"><span class="certificate-preview-action">Open course <span class="material-symbols-outlined text-base">open_in_new</span></span></a>
+<a aria-label="Open NVIDIA DGX Cloud Curriculum course" class="certificate-preview-link" href="courses/DGX%20Cloud%20Curriculum.pdf" rel="noopener" target="_blank"><span class="certificate-preview-action">Open course <span class="material-symbols-outlined text-base">open_in_new</span></span></a>
 </div>
 <div class="certificate-content">
 <div class="certificate-provider">NVIDIA</div>
 <h3 class="certificate-title">DGX Cloud Curriculum</h3>
 </div>
 </article>
-
 <article class="certificate-card course-card" style="--badge-color:#76b900;--badge-glow:rgba(118,185,0,.25)">
 <div class="badge-stage">
 <img alt="NVIDIA Networking Technical Curriculum preview" class="certificate-document" loading="lazy" src="courses/previews/nvidia-networking-technical-curriculum.jpg"/>
-<a aria-label="Open NVIDIA Networking Technical Curriculum course" class="certificate-preview-link" href="courses/Networking%20Technical%20Curriculum.pdf" target="_blank" rel="noopener"><span class="certificate-preview-action">Open course <span class="material-symbols-outlined text-base">open_in_new</span></span></a>
+<a aria-label="Open NVIDIA Networking Technical Curriculum course" class="certificate-preview-link" href="courses/Networking%20Technical%20Curriculum.pdf" rel="noopener" target="_blank"><span class="certificate-preview-action">Open course <span class="material-symbols-outlined text-base">open_in_new</span></span></a>
 </div>
 <div class="certificate-content">
 <div class="certificate-provider">NVIDIA</div>
 <h3 class="certificate-title">Networking Technical Curriculum</h3>
 </div>
 </article>
-
 <article class="certificate-card course-card" style="--badge-color:#76b900;--badge-glow:rgba(118,185,0,.25)">
 <div class="badge-stage">
 <img alt="NVIDIA Virtual Desktops Technical Curriculum preview" class="certificate-document" loading="lazy" src="courses/previews/nvidia-virtual-desktops-technical-curriculum.jpg"/>
-<a aria-label="Open NVIDIA Virtual Desktops Technical Curriculum course" class="certificate-preview-link" href="courses/NVIDIA%20Virtual%20Desktops%20Technical%20Curriculum.pdf" target="_blank" rel="noopener"><span class="certificate-preview-action">Open course <span class="material-symbols-outlined text-base">open_in_new</span></span></a>
+<a aria-label="Open NVIDIA Virtual Desktops Technical Curriculum course" class="certificate-preview-link" href="courses/NVIDIA%20Virtual%20Desktops%20Technical%20Curriculum.pdf" rel="noopener" target="_blank"><span class="certificate-preview-action">Open course <span class="material-symbols-outlined text-base">open_in_new</span></span></a>
 </div>
 <div class="certificate-content">
 <div class="certificate-provider">NVIDIA</div>
 <h3 class="certificate-title">NVIDIA Virtual Desktops Technical Curriculum</h3>
 </div>
 </article>
-
 <article class="certificate-card course-card" style="--badge-color:#8b5cf6;--badge-glow:rgba(139,92,246,.24)">
 <div class="badge-stage">
 <img alt="Data Analysis Using Excel Power BI and Copilot preview" class="certificate-document" loading="lazy" src="courses/previews/data-analysis-excel-power-bi-copilot.jpg"/>
-<a aria-label="Open Data Analysis Using Excel Power BI and Copilot course" class="certificate-preview-link" href="courses/Meshari_BinNassar_Data_Analysis_Using_Excel%2C_Power_BI_and_Copilot.pdf" target="_blank" rel="noopener"><span class="certificate-preview-action">Open course <span class="material-symbols-outlined text-base">open_in_new</span></span></a>
+<a aria-label="Open Data Analysis Using Excel Power BI and Copilot course" class="certificate-preview-link" href="courses/Meshari_BinNassar_Data_Analysis_Using_Excel%2C_Power_BI_and_Copilot.pdf" rel="noopener" target="_blank"><span class="certificate-preview-action">Open course <span class="material-symbols-outlined text-base">open_in_new</span></span></a>
 </div>
 <div class="certificate-content">
 <div class="certificate-provider">Solutions by stc</div>
 <h3 class="certificate-title">Data Analysis Using Excel, Power BI and Copilot</h3>
 </div>
 </article>
-
 <article class="certificate-card course-card" style="--badge-color:#36a6e8;--badge-glow:rgba(54,166,232,.24)">
 <div class="badge-stage">
 <img alt="Microsoft Power BI course preview" class="certificate-document" loading="lazy" src="courses/previews/microsoft-power-bi.jpg"/>
-<a aria-label="Open Microsoft Power BI course" class="certificate-preview-link" href="courses/Microsoft%20Power%20BI.jpg" target="_blank" rel="noopener"><span class="certificate-preview-action">Open course <span class="material-symbols-outlined text-base">open_in_new</span></span></a>
+<a aria-label="Open Microsoft Power BI course" class="certificate-preview-link" href="courses/Microsoft%20Power%20BI.jpg" rel="noopener" target="_blank"><span class="certificate-preview-action">Open course <span class="material-symbols-outlined text-base">open_in_new</span></span></a>
 </div>
 <div class="certificate-content">
 <div class="certificate-provider">Microsoft</div>
 <h3 class="certificate-title">Microsoft Power BI</h3>
 </div>
 </article>
-
 <article class="certificate-card course-card" style="--badge-color:#0f62fe;--badge-glow:rgba(15,98,254,.24)">
 <div class="badge-stage">
 <img alt="IBM Data Science course preview" class="certificate-document" loading="lazy" src="courses/previews/ibm-data-science.jpg"/>
-<a aria-label="Open IBM Data Science course" class="certificate-preview-link" href="courses/IBM%20Data%20Science.jpg" target="_blank" rel="noopener"><span class="certificate-preview-action">Open course <span class="material-symbols-outlined text-base">open_in_new</span></span></a>
+<a aria-label="Open IBM Data Science course" class="certificate-preview-link" href="courses/IBM%20Data%20Science.jpg" rel="noopener" target="_blank"><span class="certificate-preview-action">Open course <span class="material-symbols-outlined text-base">open_in_new</span></span></a>
 </div>
 <div class="certificate-content">
 <div class="certificate-provider">IBM</div>
 <h3 class="certificate-title">IBM Data Science</h3>
 </div>
 </article>
-
 <article class="certificate-card course-card" style="--badge-color:#ec713e;--badge-glow:rgba(236,113,62,.22)">
 <div class="badge-stage">
 <img alt="Oracle SQL course preview" class="certificate-document" loading="lazy" src="courses/SQLOracel.jpg"/>
-<a aria-label="Open Oracle SQL course" class="certificate-preview-link" href="courses/SQLOracel.jpg" target="_blank" rel="noopener"><span class="certificate-preview-action">Open course <span class="material-symbols-outlined text-base">open_in_new</span></span></a>
+<a aria-label="Open Oracle SQL course" class="certificate-preview-link" href="courses/SQLOracel.jpg" rel="noopener" target="_blank"><span class="certificate-preview-action">Open course <span class="material-symbols-outlined text-base">open_in_new</span></span></a>
 </div>
 <div class="certificate-content">
 <div class="certificate-provider">Oracle</div>
 <h3 class="certificate-title">SQL Oracle Course</h3>
 </div>
 </article>
-
 </div>
 <div class="course-toggle-wrap">
 <button aria-controls="courses-grid" aria-label="Show 7 more courses" class="course-toggle" id="course-toggle" type="button">
@@ -1279,31 +1445,7 @@
 </div>
 </section>
 <!-- Skills -->
-<section class="py-section-gap px-gutter max-w-container-max mx-auto" id="skills">
-<h2 class="font-headline-md text-headline-md text-on-surface mb-12 text-center">Core Technical Skills</h2>
-<div class="skills-showcase">
-<article class="skill-group skill-group--ai" style="--skill-accent:#adc6ff">
-<div class="skill-group-head"><h3 class="skill-group-title"><span class="skill-group-icon"><span class="material-symbols-outlined">neurology</span></span>AI &amp; Model Deployment</h3><span class="skill-group-count">9 SKILLS</span></div>
-<div class="skill-list"><span class="skill-chip">NVIDIA NIM</span><span class="skill-chip">LLM Inference</span><span class="skill-chip">Embedding Models</span><span class="skill-chip">RAG</span><span class="skill-chip">Air-Gapped Deployment</span><span class="skill-chip">Model Selection</span><span class="skill-chip">Token Usage Analysis</span><span class="skill-chip">Ollama</span><span class="skill-chip">ChromaDB</span></div>
-</article>
-<article class="skill-group skill-group--cloud" style="--skill-accent:#4cd7f6">
-<div class="skill-group-head"><h3 class="skill-group-title"><span class="skill-group-icon"><span class="material-symbols-outlined">cloud</span></span>Cloud &amp; Infrastructure</h3><span class="skill-group-count">5 SKILLS</span></div>
-<div class="skill-list"><span class="skill-chip">AWS</span><span class="skill-chip">Oracle Cloud Infrastructure</span><span class="skill-chip">Microsoft Azure</span><span class="skill-chip">Docker</span><span class="skill-chip">Linux</span></div>
-</article>
-<article class="skill-group skill-group--apps" style="--skill-accent:#8083ff">
-<div class="skill-group-head"><h3 class="skill-group-title"><span class="skill-group-icon"><span class="material-symbols-outlined">api</span></span>Application Development &amp; APIs</h3><span class="skill-group-count">4 SKILLS</span></div>
-<div class="skill-list"><span class="skill-chip">Next.js</span><span class="skill-chip">FastAPI</span><span class="skill-chip">REST APIs</span><span class="skill-chip">OAuth</span></div>
-</article>
-<article class="skill-group skill-group--programming" style="--skill-accent:#c0c1ff">
-<div class="skill-group-head"><h3 class="skill-group-title"><span class="skill-group-icon"><span class="material-symbols-outlined">code</span></span>Programming &amp; Data</h3><span class="skill-group-count">3 SKILLS</span></div>
-<div class="skill-list"><span class="skill-chip">Python</span><span class="skill-chip">SQL</span><span class="skill-chip">Java</span></div>
-</article>
-<article class="skill-group skill-group--data" style="--skill-accent:#03b5d3">
-<div class="skill-group-head"><h3 class="skill-group-title"><span class="skill-group-icon"><span class="material-symbols-outlined">database</span></span>Databases &amp; Analytics</h3><span class="skill-group-count">6 SKILLS</span></div>
-<div class="skill-list"><span class="skill-chip">PostgreSQL</span><span class="skill-chip">Oracle</span><span class="skill-chip">MySQL</span><span class="skill-chip">Firebase</span><span class="skill-chip">Excel</span><span class="skill-chip">Power BI</span></div>
-</article>
-</div>
-</section>
+<section class="py-section-gap px-gutter max-w-container-max mx-auto" id="skills"><h2 class="font-headline-md text-headline-md text-on-surface mb-12 text-center">Core Technical Skills</h2><div class="skills-showcase"><article class="skill-group skill-group--agentic" style="--skill-accent:#4cd7f6"><div class="skill-group-head"><h3 class="skill-group-title"><span class="skill-group-icon"><span class="material-symbols-outlined">hub</span></span>Agentic AI &amp; LLMs</h3><span class="skill-group-count">9 SKILLS</span></div><div class="skill-list"><span class="skill-chip">AI Agents</span><span class="skill-chip">LangGraph</span><span class="skill-chip">LangChain</span><span class="skill-chip">MCP</span><span class="skill-chip">Tool Calling</span><span class="skill-chip">Workflow Orchestration</span><span class="skill-chip">Human-in-the-Loop Approvals</span><span class="skill-chip">Persistent Memory</span><span class="skill-chip">RAG</span></div></article><article class="skill-group skill-group--ai" style="--skill-accent:#adc6ff"><div class="skill-group-head"><h3 class="skill-group-title"><span class="skill-group-icon"><span class="material-symbols-outlined">neurology</span></span>AI Infrastructure &amp; Model Deployment</h3><span class="skill-group-count">8 SKILLS</span></div><div class="skill-list"><span class="skill-chip">NVIDIA NIM</span><span class="skill-chip">vLLM</span><span class="skill-chip">LLM Inference</span><span class="skill-chip">Embedding Models</span><span class="skill-chip">Air-Gapped Deployment</span><span class="skill-chip">Model Selection</span><span class="skill-chip">Ollama</span><span class="skill-chip">ChromaDB</span></div></article><article class="skill-group skill-group--cloud" style="--skill-accent:#8083ff"><div class="skill-group-head"><h3 class="skill-group-title"><span class="skill-group-icon"><span class="material-symbols-outlined">cloud</span></span>Cloud, Kubernetes &amp; DevOps</h3><span class="skill-group-count">13 SKILLS</span></div><div class="skill-list"><span class="skill-chip">AWS</span><span class="skill-chip">Oracle Cloud Infrastructure</span><span class="skill-chip">Microsoft Azure</span><span class="skill-chip">Kubernetes</span><span class="skill-chip">Docker</span><span class="skill-chip">Linux</span><span class="skill-chip">Git / GitHub</span><span class="skill-chip">VirtualBox</span><span class="skill-chip">kubeadm</span><span class="skill-chip">containerd</span><span class="skill-chip">Calico</span><span class="skill-chip">HAProxy</span><span class="skill-chip">VPC Networking</span></div></article><article class="skill-group skill-group--apps" style="--skill-accent:#03b5d3"><div class="skill-group-head"><h3 class="skill-group-title"><span class="skill-group-icon"><span class="material-symbols-outlined">api</span></span>Backend &amp; APIs</h3><span class="skill-group-count">8 SKILLS</span></div><div class="skill-list"><span class="skill-chip">Next.js</span><span class="skill-chip">FastAPI</span><span class="skill-chip">REST APIs</span><span class="skill-chip">OAuth</span><span class="skill-chip">Pydantic</span><span class="skill-chip">SQLAlchemy</span><span class="skill-chip">Alembic</span><span class="skill-chip">Prisma</span></div></article><article class="skill-group skill-group--programming" style="--skill-accent:#c0c1ff"><div class="skill-group-head"><h3 class="skill-group-title"><span class="skill-group-icon"><span class="material-symbols-outlined">code</span></span>Programming &amp; Data</h3><span class="skill-group-count">4 SKILLS</span></div><div class="skill-list"><span class="skill-chip">Python</span><span class="skill-chip">SQL</span><span class="skill-chip">Java</span><span class="skill-chip">TypeScript</span></div></article><article class="skill-group skill-group--data" style="--skill-accent:#56d7ac"><div class="skill-group-head"><h3 class="skill-group-title"><span class="skill-group-icon"><span class="material-symbols-outlined">database</span></span>Databases &amp; Analytics</h3><span class="skill-group-count">4 SKILLS</span></div><div class="skill-list"><span class="skill-chip">PostgreSQL</span><span class="skill-chip">Oracle Database</span><span class="skill-chip">MySQL</span><span class="skill-chip">Firebase</span></div></article></div></section>
 <section class="py-section-gap px-gutter max-w-container-max mx-auto" id="education">
 <div class="glass-card p-12 rounded-3xl relative overflow-hidden">
 <div class="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2">
@@ -1330,16 +1472,30 @@
 </div>
 </div>
 </div>
+</section><section class="pb-section-gap px-gutter max-w-container-max mx-auto" id="languages">
+<div class="glass-card rounded-3xl p-8 md:p-10">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-7">
+<div>
+<div class="font-label-caps text-label-caps text-secondary uppercase tracking-widest mb-3">Communication</div>
+<h2 class="font-headline-md text-headline-md text-on-surface">Languages</h2>
+</div>
+<div class="grid grid-cols-2 gap-4 md:gap-6 w-full md:w-auto">
+<div class="rounded-2xl border border-white/10 bg-white/5 px-6 py-5 min-w-0 md:min-w-[170px]">
+<div class="font-semibold text-lg">Arabic</div><div class="text-sm text-secondary mt-2">Native</div>
+</div>
+<div class="rounded-2xl border border-white/10 bg-white/5 px-6 py-5 min-w-0 md:min-w-[170px]">
+<div class="font-semibold text-lg">English</div><div class="text-sm text-secondary mt-2">Fluent</div>
+</div>
+</div>
+</div>
+</div>
 </section>
-
-
 <!-- Contact Section -->
 <section class="py-section-gap px-gutter bg-surface-container-lowest/80 relative" id="contact">
 <div class="max-w-container-max mx-auto relative z-10">
 <div class="text-center mb-16">
 <h2 class="font-headline-md text-headline-md text-on-surface mb-4">Let's Connect..</h2>
-<p class="text-on-surface-variant">Open to opportunities, collaborations, and technical projects involving AI model deployment,
-                        cloud infrastructure, and full-stack development.</p>
+<p class="text-on-surface-variant">Open to AI engineering, agentic AI, cloud infrastructure, and backend development opportunities. Feel free to reach out for collaborations or technical projects.</p>
 </div>
 <div class="grid md:grid-cols-2 gap-12">
 <div class="space-y-6">
@@ -1349,7 +1505,7 @@
 </div>
 <div>
 <p class="font-label-caps text-xs text-on-surface-variant mb-1">EMAIL ME</p>
-<a class="text-lg font-bold hover:text-primary transition-colors" href="mailto:MshariBinNassar@gmail.com">MshariBinNassar@gmail.com</a>
+<a class="text-lg font-bold hover:text-primary transition-colors" href="mailto:MshariBinNassar@gmail.com">msharibinnassar@gmail.com</a>
 </div>
 </div>
 <div class="glass-card p-8 rounded-2xl flex items-center gap-6">
@@ -1363,6 +1519,9 @@
 </div>
 </div>
 <div class="glass-card p-8 rounded-2xl flex items-center gap-6">
+<div class="w-14 h-14 rounded-full bg-secondary/10 flex items-center justify-center text-secondary"><span class="material-symbols-outlined">call</span></div>
+<div><p class="font-label-caps text-xs text-on-surface-variant mb-1">PHONE</p>
+<a class="text-lg font-bold hover:text-secondary transition-colors" href="tel:+966553305757">+966 55 330 5757</a></div></div><div class="glass-card p-8 rounded-2xl flex items-center gap-6">
 <div class="w-14 h-14 rounded-full bg-tertiary/10 flex items-center justify-center text-tertiary">
 <span class="material-symbols-outlined">location_on</span>
 </div>
@@ -1398,21 +1557,17 @@
 </div>
 </section>
 </main>
-
-    <button id="back-to-top" type="button" aria-label="Back to top">
-        <span class="material-symbols-outlined">arrow_upward</span>
-    </button>
-    <div id="toast" role="status" aria-live="polite"></div>
-
-    <!-- Footer (Shared Component) -->
+<button aria-label="Back to top" id="back-to-top" type="button">
+<span class="material-symbols-outlined">arrow_upward</span>
+</button>
+<div aria-live="polite" id="toast" role="status"></div>
+<!-- Footer (Shared Component) -->
 <footer class="bg-surface-dim border-t border-outline-variant/30 w-full py-section-gap">
 <div class="flex flex-col md:flex-row justify-between items-center max-w-container-max mx-auto px-gutter gap-8">
 <div class="flex flex-col gap-4">
 <div class="font-display-lg text-body-lg font-bold text-on-surface">Meshari Naif Bin Nassar</div>
 <p class="text-on-surface-variant font-body-md text-body-md max-w-sm">© 2026 Meshari Naif Bin Nassar. <br/>
-<span class="whitespace-nowrap">
-                        Built around AI model deployment, cloud infrastructure, and full-stack development.
-                    </span>
+<span class="whitespace-nowrap">Agentic AI · Secure LLM Deployment · Kubernetes · Full-Stack Applications</span>
 </p>
 </div>
 <div class="flex gap-8 items-center">
@@ -1422,7 +1577,7 @@
 </div>
 </div>
 </footer>
-    <script>
+<script>
         (() => {
             "use strict";
 
@@ -1557,7 +1712,7 @@ const menuButton = document.getElementById("mobile-menu-button");
             }
 
             const phrase = document.getElementById("rotating-phrase");
-            const phrases = ["Reliable AI-Powered", "Secure Model Deployment", "Practical Cloud-Native"];
+            const phrases = ["Intelligent Agentic AI", "Secure Model Serving", "Cloud-Native AI"];
             let phraseIndex = 0;
             if (phrase && !reducedMotion) {
                 setInterval(() => {
